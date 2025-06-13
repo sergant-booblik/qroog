@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 import { appDataSource } from '@/config/orm-config';
-import { LoginCode } from '@/entity/login-codes';
+import { LoginCode } from '@/entity/login-code';
 import { User } from '@/entity/user';
 import { generateUsername } from '@/controller/auth/generate-username';
 import { generateTokensAndSetCookies } from '@/controller/auth/cookies-and-tokens';

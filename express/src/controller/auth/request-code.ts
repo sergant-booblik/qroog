@@ -1,5 +1,5 @@
 import ShortUniqueId from 'short-unique-id';
-import { LoginCode } from '@/entity/login-codes';
+import { LoginCode } from '@/entity/login-code';
 import { appDataSource } from '@/config/orm-config';
 import { sendEmail } from '@/features/mail/send-email';
 import { type Request, type Response } from 'express';

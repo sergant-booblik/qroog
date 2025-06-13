@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Game } from '@/entity/game';
 import { Review } from '@/entity/review';
+import { Theme } from '@/types/theme';
 
 @Entity()
 export class User {
@@ -30,7 +31,8 @@ export class User {
     @Column({ default: 'en-US' })
     locale: string;
 
-    @Column({ default: 'light' })
+    @Column({ type: 'enum', enum: Theme, enumName: 'theme', default: 'light' })
+    theme: Theme;
 
     @OneToMany(() => Game, (game) => game.user)
     games: Game[];

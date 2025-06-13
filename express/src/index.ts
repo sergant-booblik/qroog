@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import routes from './routes';
 import dotenv from 'dotenv';
 import nodeCron from 'node-cron';
-import { LoginCode } from '@/entity/login-codes';
+import { LoginCode } from '@/entity/login-code';
 
 dotenv.config();
 

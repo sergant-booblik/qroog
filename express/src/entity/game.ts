@@ -44,10 +44,10 @@ export class Game {
     hasRounds: boolean;
 
     @Column({ default: false })
-    hasPauseAfterRoundSeconds: boolean;
+    hasPauseAfterRound: boolean;
 
     @Column({ type: 'integer' })
-    pauseAfterDurationSeconds: number;
+    pauseAfterRoundSeconds: number;
 
     @Column({ type: 'integer' })
     points: number;
@@ -74,7 +74,7 @@ export class Game {
 
     @ManyToMany(() => Tag, (tag) => tag.games, { cascade: ['insert'] })
     @JoinTable({
-        name: 'gameTags',
+        name: 'game_tags',
         joinColumn: { name: 'gameId', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
     })
