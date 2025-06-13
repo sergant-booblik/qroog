@@ -1,4 +1,13 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+    Column,
+    CreateDateColumn,
+    DeleteDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
+import { Game } from '@/entity/game';
 
 @Entity()
 export class User {
@@ -21,7 +30,9 @@ export class User {
     locale: string;
 
     @Column({ default: 'light' })
-    theme: string;
+
+    @OneToMany(() => Game, (game) => game.user)
+    games: Game[];
 
     @CreateDateColumn()
     createdDate: Date;
