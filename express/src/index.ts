@@ -6,7 +6,6 @@ import routes from './routes';
 import dotenv from 'dotenv';
 import nodeCron from 'node-cron';
 import { LoginCode } from '@/entity/login-codes';
-import { LessThan } from 'typeorm';
 
 dotenv.config();
 
@@ -31,11 +30,13 @@ appDataSource.initialize().then(async () => {
 
     nodeCron.schedule('*/10 * * * *', async () => {
         const loginCodeRepo = appDataSource.getRepository(LoginCode);
-        const result = await loginCodeRepo.delete({
-            expiresAt: LessThan(new Date()),
-            used: true,
+        await loginCodeRepo
+            .createQueryBuilder()
+            .delete()
+            .where('expiresAt < :now', { now: new Date() })
+            .orWhere('used = :used', { used: true })
+            .execute();
         });
-
-        console.log(`[cron] Удалено ${result.affected} просроченных и использованных кодов`);
-    });
-}).catch((error) => console.error(error));;
+}).catch((error) => {
+    throw new Error(error);
+});

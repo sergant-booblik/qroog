@@ -1,12 +1,12 @@
 import ShortUniqueId from 'short-unique-id';
 import { LoginCode } from '@/entity/login-codes';
 import { appDataSource } from '@/config/orm-config';
-import { sendEmail } from '@/utils/mail/send-email';
+import { sendEmail } from '@/features/mail/send-email';
 import { type Request, type Response } from 'express';
-import { EmailType } from '@/type/email';
+import { EmailType } from '@/types/email';
 
 export async function requestCode(req: Request, res: Response): Promise<void> {
-    const { email } = req.body;
+    const { email, locale } = req.body;
 
     const uid = new ShortUniqueId({
         dictionary: 'number',
@@ -25,8 +25,8 @@ export async function requestCode(req: Request, res: Response): Promise<void> {
     await sendEmail({
         type: EmailType.SEND_VERIFICATION_CODE,
         to: email,
-        subject: 'Your verification code',
         code,
+        locale,
     });
 
     res.status(200).send({
