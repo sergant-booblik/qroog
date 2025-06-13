@@ -8,6 +8,7 @@ import {
     UpdateDateColumn,
 } from 'typeorm';
 import { Game } from '@/entity/game';
+import { Review } from '@/entity/review';
 
 @Entity()
 export class User {
@@ -33,6 +34,9 @@ export class User {
 
     @OneToMany(() => Game, (game) => game.user)
     games: Game[];
+
+    @OneToMany(() => Review, (review) => review.user)
+    reviews: Review[];
 
     @CreateDateColumn()
     createdDate: Date;

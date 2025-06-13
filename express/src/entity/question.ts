@@ -39,7 +39,7 @@ export class Question {
     hasAllIn: boolean;
 
     @ManyToOne(() => Game, (game) => game.questions, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'GameId' })
+    @JoinColumn({ name: 'gameId' })
     game: Game;
 
     @OneToMany(() => Answer, (answer) => answer.question)

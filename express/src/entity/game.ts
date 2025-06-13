@@ -13,6 +13,7 @@ import { Question } from '@/entity/question';
 import { AnswerLabelStyle, RevealAnswerTiming } from '@/types/game';
 import { Audio } from '@/entity/audio';
 import { Tag } from '@/entity/tag';
+import { Review } from '@/entity/review';
 
 const { randomUUID } = new ShortUniqueId({ length: 5 });
 
@@ -67,6 +68,9 @@ export class Game {
 
     @OneToMany(() => Question, (question) => question.game)
     questions: Question[];
+
+    @OneToMany(() => Review, (review) => review.game)
+    reviews: Review[];
 
     @ManyToMany(() => Tag, (tag) => tag.games, { cascade: ['insert'] })
     @JoinTable({
