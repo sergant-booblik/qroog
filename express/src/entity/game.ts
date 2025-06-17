@@ -23,9 +23,9 @@ export class Game {
     id!: string;
 
     @Column()
-    title: string;
+    title!: string;
 
-    @Column()
+    @Column({ default: '' })
     description: string;
 
     @Column({ default: null })
@@ -34,10 +34,10 @@ export class Game {
     @Column({ default: false })
     isPublic: boolean;
 
-    @Column({ type: 'enum', enum: RevealAnswerTiming, enumName: 'revealAnswerTiming' })
+    @Column({ type: 'enum', enum: RevealAnswerTiming, enumName: 'revealAnswerTiming', default: RevealAnswerTiming.AFTER_QUESTION })
     revealAnswerTiming: RevealAnswerTiming;
 
-    @Column({ type: 'enum', enum: AnswerLabelStyle, enumName: 'answerLabelStyle' })
+    @Column({ type: 'enum', enum: AnswerLabelStyle, enumName: 'answerLabelStyle', default: AnswerLabelStyle.LATIN })
     answerLabelStyle: AnswerLabelStyle;
 
     @Column({ default: false })
@@ -46,21 +46,21 @@ export class Game {
     @Column({ default: false })
     hasPauseAfterRound: boolean;
 
-    @Column({ type: 'integer' })
+    @Column({ type: 'integer', default: 0 })
     pauseAfterRoundSeconds: number;
 
-    @Column({ type: 'integer' })
+    @Column({ type: 'integer', default: 1 })
     points: number;
 
     @Column({ default: false })
     hasPenalty: boolean;
 
-    @Column({ type: 'integer' })
+    @Column({ type: 'integer', default: 0 })
     penaltyPoints: number;
 
     @ManyToOne(() => User, (user) => user.games, { onDelete: 'NO ACTION' })
     @JoinColumn({ name: 'userId' })
-    user: User;
+    user!: User;
 
     @ManyToOne(() => Audio, (audio) => audio.games, { onDelete: 'SET NULL' })
     @JoinColumn({ name: 'audioId' })
@@ -79,6 +79,9 @@ export class Game {
         inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
     })
     tags: Tag[];
+
+    @ManyToMany(() => User, (user) => user.favoriteGames)
+    favoriteBy: User[];
 
     @CreateDateColumn()
     createdDate: Date;

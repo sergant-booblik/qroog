@@ -2,7 +2,7 @@ import {
     Column,
     CreateDateColumn,
     DeleteDateColumn,
-    Entity,
+    Entity, JoinTable, ManyToMany,
     OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
@@ -39,6 +39,14 @@ export class User {
 
     @OneToMany(() => Review, (review) => review.user)
     reviews: Review[];
+
+    @ManyToMany(() => Game, (game) => game.favoriteBy)
+    @JoinTable({
+        name: 'user_favorites',
+        joinColumn: { name: 'userId', referencedColumnName: 'id' },
+        inverseJoinColumn: { name: 'gameId', referencedColumnName: 'id' },
+    })
+    favoriteGames: Game[];
 
     @CreateDateColumn()
     createdDate: Date;
