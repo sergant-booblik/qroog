@@ -10,7 +10,8 @@ export async function addGame(req: Request, res: Response): Promise<void> {
         const routeUserId = Number(req.params.userId);
 
         if (userId !== routeUserId) {
-            res.status(401).json({ error: 'Failed to save game' });
+            res.status(403).json({ error: 'Failed to save game' });
+            return;
         }
 
         const gameRepo = appDataSource.getRepository(Game);

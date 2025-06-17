@@ -12,11 +12,8 @@ export class Answer {
     @Column({ default: false })
     isTrue: boolean;
 
-    @Column()
-    round: number;
-
-    @Column()
-    orderInRound: number;
+    @Column({ default: 0 })
+    order: number;
 
     @ManyToOne(() => Question, (question) => question.answers, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'questionId' })

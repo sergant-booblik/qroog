@@ -14,22 +14,22 @@ export class Question {
     @Column({ default: null })
     image: string;
 
-    @Column({ type: 'enum', enum: QuestionType, enumName: 'questionType' })
+    @Column({ type: 'enum', enum: QuestionType, enumName: 'questionType', default: QuestionType.CLASSIC })
     type: QuestionType;
 
-    @Column()
-    order: number;
+    @Column({ default: null })
+    round: number;
 
-    @Column()
-    tour: number;
+    @Column({ default: 0 })
+    orderInRound: number;
 
-    @Column()
+    @Column({ default: '' })
     answerDescription: string;
 
-    @Column()
+    @Column({ default: null })
     answerDescriptionImage: string;
 
-    @Column()
+    @Column({ default: null })
     customResponseTime: number;
 
     @Column({ default: false })
