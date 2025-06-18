@@ -6,6 +6,7 @@ import { fetchFavoritesQuizzes } from '@/controller/quiz/fetch-favorites-quizzes
 import { fetchQuiz } from '@/controller/quiz/fetch-quiz';
 import { updateQuiz } from '@/controller/quiz/update-quiz';
 import { deleteQuiz } from '@/controller/quiz/delete-quiz';
+import { fetchQuizForEdit } from '@/controller/quiz/fetch-quiz-for-edit';
 import questionRoutes from '@/routes/v1/question';
 
 const quizRoutes = Router({ mergeParams: true });
@@ -15,6 +16,7 @@ quizRoutes.post('/', addQuiz);
 quizRoutes.get('/my', fetchAllMyQuizzes);
 quizRoutes.get('/favorites', fetchFavoritesQuizzes);
 quizRoutes.get('/:quizId', fetchQuiz);
+quizRoutes.get('/:quizId/edit', fetchQuizForEdit);
 quizRoutes.patch('/:quizId', updateQuiz);
 quizRoutes.delete('/:quizId', deleteQuiz);
 

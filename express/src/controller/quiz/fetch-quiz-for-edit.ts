@@ -5,17 +5,21 @@ import { Question } from '@/entity/question';
 import { authorizeUser } from '@/utils/auth';
 import { groupQuestion } from '@/utils/group-question';
 
-export async function fetchQuestions(req: Request, res: Response): Promise<void> {
+export async function fetchQuizForEdit(req: Request, res: Response): Promise<void> {
     try {
         const quizId = req.params.quizId;
         const userId = await authorizeUser(req, res);
         if (!userId) return;
 
         const quizRepo = appDataSource.getRepository(Quiz);
+        const questionRepo = appDataSource.getRepository(Question);
 
         const quiz = await quizRepo.findOne({
-            where: { id: quizId },
-            relations: ['user'],
+            where: {
+                id: quizId,
+                user: { id: userId },
+            },
+            relations: ['tags', 'user'],
         });
 
         if (!quiz) {
@@ -23,14 +27,9 @@ export async function fetchQuestions(req: Request, res: Response): Promise<void>
             return;
         }
 
-        if (!quiz.isPublic) {
-            res.status(403).json({ error: 'Access denied' });
-            return;
-        }
-
-        const questionRepo = appDataSource.getRepository(Question);
         const questions = await questionRepo.find({
             where: { quiz: { id: quizId } },
+            relations: ['answers'],
             order: {
                 round: 'ASC',
                 orderInRound: 'ASC',
@@ -39,8 +38,8 @@ export async function fetchQuestions(req: Request, res: Response): Promise<void>
 
         const groupedQuestions = groupQuestion(questions);
 
-        res.status(200).json({ groupedQuestions });
+        res.status(200).json({ quiz: { ...quiz, groupedQuestions } });
     } catch (error) {
-        res.status(500).json({ error: `Failed to fetch questions: ${error}` });
+        res.status(500).json({ error: `Failed to fetch quiz: ${error}` });
     }
 }

@@ -1,22 +1,16 @@
 import { type Request, type Response } from 'express';
-import { getUserId } from '@/features/user/get-user-id';
 import { appDataSource } from '@/config/orm-config';
 import { Quiz } from '@/entity/quiz';
 import { Brackets } from 'typeorm';
+import { authorizeUser } from '@/utils/auth';
 
 const PAGE_SIZE = 12;
 
 export async function fetchFavoritesQuizzes(req: Request, res: Response): Promise<void> {
     try {
         const page = Number(req.query.page) || 1;
-        const accessToken = req.cookies['accessToken'];
-        const userId = await getUserId(accessToken).then((result) => result);
-        const routeUserId = Number(req.params.userId);
-
-        if (userId !== routeUserId || !userId) {
-            res.status(403).json({ error: 'Failed to fetch quizzes' });
-            return;
-        }
+        const userId = await authorizeUser(req, res);
+        if (!userId) return;
 
         const quizRepo = appDataSource.getRepository(Quiz);
 
@@ -24,11 +18,11 @@ export async function fetchFavoritesQuizzes(req: Request, res: Response): Promis
             .createQueryBuilder('quiz')
             .leftJoin('quiz.favoriteBy', 'user')
             .leftJoinAndSelect('quiz.user', 'owner')
-            .where('user.id = :userId', { userId: routeUserId })
+            .where('user.id = :userId', { userId })
             .andWhere(
                 new Brackets(qb => {
                     qb.where('quiz.isPublic = true')
-                        .orWhere('owner.id = :userId', { userId: routeUserId });
+                        .orWhere('owner.id = :userId', { userId });
                 }),
             )
             .orderBy('quiz.createdDate', 'DESC')
@@ -38,7 +32,7 @@ export async function fetchFavoritesQuizzes(req: Request, res: Response): Promis
 
         res.status(200)
             .json({
-                data: favorites,
+                quizzes: favorites,
                 pagination: {
                     total,
                     page,
