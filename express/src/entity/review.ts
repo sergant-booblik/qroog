@@ -1,4 +1,13 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import {
+    Column,
+    CreateDateColumn, DeleteDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    Unique,
+    UpdateDateColumn,
+} from 'typeorm';
 import { Quiz } from '@/entity/quiz';
 import { User } from '@/entity/user';
 
@@ -21,4 +30,13 @@ export class Review {
     @ManyToOne(() => Quiz, (quiz) => quiz.reviews, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'quizId' })
     quiz: Quiz;
+
+    @CreateDateColumn()
+    createdDate: Date;
+
+    @UpdateDateColumn()
+    updatedDate: Date;
+
+    @DeleteDateColumn()
+    deletedDate: Date;
 }

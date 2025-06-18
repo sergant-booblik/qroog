@@ -20,6 +20,6 @@ quizRoutes.get('/:quizId/edit', fetchQuizForEdit);
 quizRoutes.patch('/:quizId', updateQuiz);
 quizRoutes.delete('/:quizId', deleteQuiz);
 
-quizRoutes.use('/:quizId', questionRoutes);
+quizRoutes.use('/:quizId/question', questionRoutes);
 
 export default quizRoutes;

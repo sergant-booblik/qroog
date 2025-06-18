@@ -1,4 +1,13 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+    Column,
+    CreateDateColumn, DeleteDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from 'typeorm';
 import { Quiz } from '@/entity/quiz';
 import { Answer } from '@/entity/answer';
 import { QuestionType } from '@/types/question';
@@ -44,4 +53,13 @@ export class Question {
 
     @OneToMany(() => Answer, (answer) => answer.question)
     answers: Answer[];
+
+    @CreateDateColumn()
+    createdDate: Date;
+
+    @UpdateDateColumn()
+    updatedDate: Date;
+
+    @DeleteDateColumn()
+    deletedDate: Date;
 }
