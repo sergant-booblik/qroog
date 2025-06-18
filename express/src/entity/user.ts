@@ -7,7 +7,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 import { Review } from '@/entity/review';
 import { Theme } from '@/types/theme';
 
@@ -34,19 +34,19 @@ export class User {
     @Column({ type: 'enum', enum: Theme, enumName: 'theme', default: 'light' })
     theme: Theme;
 
-    @OneToMany(() => Game, (game) => game.user)
-    games: Game[];
+    @OneToMany(() => Quiz, (quiz) => quiz.user)
+    quizzes: Quiz[];
 
     @OneToMany(() => Review, (review) => review.user)
     reviews: Review[];
 
-    @ManyToMany(() => Game, (game) => game.favoriteBy)
+    @ManyToMany(() => Quiz, (quiz) => quiz.favoriteBy)
     @JoinTable({
         name: 'user_favorites',
         joinColumn: { name: 'userId', referencedColumnName: 'id' },
-        inverseJoinColumn: { name: 'gameId', referencedColumnName: 'id' },
+        inverseJoinColumn: { name: 'quizId', referencedColumnName: 'id' },
     })
-    favoriteGames: Game[];
+    favoriteQuizzes: Quiz[];
 
     @CreateDateColumn()
     createdDate: Date;

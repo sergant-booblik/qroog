@@ -1,11 +1,11 @@
 import { type Request, type Response } from 'express';
 import { getUserId } from '@/features/user/get-user-id';
 import { appDataSource } from '@/config/orm-config';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 
 const PAGE_SIZE = 12;
 
-export async function fetchAllPublicGames(req: Request, res: Response): Promise<void> {
+export async function fetchAllMyQuizzes(req: Request, res: Response): Promise<void> {
     try {
         const page = Number(req.query.page) || 1;
         const accessToken = req.cookies['accessToken'];
@@ -13,25 +13,24 @@ export async function fetchAllPublicGames(req: Request, res: Response): Promise<
         const routeUserId = Number(req.params.userId);
 
         if (userId !== routeUserId || !userId) {
-            res.status(403).json({ error: 'Failed to fetch games' });
+            res.status(403).json({ error: 'Failed to fetch quizzes' });
             return;
         }
 
-        const gameRepo = appDataSource.getRepository(Game);
+        const quizRepo = appDataSource.getRepository(Quiz);
 
-        const [games, total] = await gameRepo
-            .createQueryBuilder('game')
-            .leftJoinAndSelect('game.user', 'user')
-            .where('game.isPublic = :public', { public: true })
-            .orWhere('user.id = :userId', { userId })
-            .orderBy('game.createdDate', 'DESC')
+        const [quizzes, total] = await quizRepo
+            .createQueryBuilder('quiz')
+            .leftJoinAndSelect('quiz.user', 'user')
+            .where('user.id = :userId', { userId })
+            .orderBy('quiz.createdDate', 'DESC')
             .skip((page - 1) * PAGE_SIZE)
             .take(PAGE_SIZE)
             .getManyAndCount();
 
         res.status(200)
             .json({
-            data: games,
+            data: quizzes,
             pagination: {
                 total,
                 page,
@@ -40,6 +39,6 @@ export async function fetchAllPublicGames(req: Request, res: Response): Promise<
             },
         });
     } catch (error) {
-        res.status(500).json({ error: `Failed to fetch games: ${error}` });
+        res.status(500).json({ error: `Failed to fetch quizzes: ${error}` });
     }
 }

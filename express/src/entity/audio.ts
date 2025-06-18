@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 
 @Entity()
 export class Audio {
@@ -12,6 +12,6 @@ export class Audio {
     @Column()
     title: string;
 
-    @OneToMany(() => Game, (game) => game.audio)
-    games: Game[];
+    @OneToMany(() => Quiz, (quiz) => quiz.audio)
+    quizzes: Quiz[];
 }

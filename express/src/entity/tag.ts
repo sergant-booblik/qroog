@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 
 @Entity()
 export class Tag {
@@ -9,6 +9,6 @@ export class Tag {
     @Column({ unique: true })
     name: string;
 
-    @ManyToMany(() => Game, (game) => game.tags)
-    games: Game[];
+    @ManyToMany(() => Quiz, (quiz) => quiz.tags)
+    quizzes: Quiz[];
 }

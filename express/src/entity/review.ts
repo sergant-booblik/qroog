@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 import { User } from '@/entity/user';
 
 @Entity()
-@Unique(['user', 'game'])
+@Unique(['user', 'quiz'])
 export class Review {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -18,7 +18,7 @@ export class Review {
     @JoinColumn({ name: 'userId' })
     user: User;
 
-    @ManyToOne(() => Game, (game) => game.reviews, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'gameId' })
-    game: Game;
+    @ManyToOne(() => Quiz, (quiz) => quiz.reviews, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'quizId' })
+    quiz: Quiz;
 }

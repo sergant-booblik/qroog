@@ -10,7 +10,7 @@ import {
 import ShortUniqueId from 'short-unique-id';
 import { User } from '@/entity/user';
 import { Question } from '@/entity/question';
-import { AnswerLabelStyle, RevealAnswerTiming } from '@/types/game';
+import { AnswerLabelStyle, RevealAnswerTiming } from '@/types/quiz';
 import { Audio } from '@/entity/audio';
 import { Tag } from '@/entity/tag';
 import { Review } from '@/entity/review';
@@ -18,7 +18,7 @@ import { Review } from '@/entity/review';
 const { randomUUID } = new ShortUniqueId({ length: 5 });
 
 @Entity()
-export class Game {
+export class Quiz {
     @PrimaryColumn('varchar', { default: randomUUID() })
     id!: string;
 
@@ -58,29 +58,29 @@ export class Game {
     @Column({ type: 'integer', default: 0 })
     penaltyPoints: number;
 
-    @ManyToOne(() => User, (user) => user.games, { onDelete: 'NO ACTION' })
+    @ManyToOne(() => User, (user) => user.quizzes, { onDelete: 'NO ACTION' })
     @JoinColumn({ name: 'userId' })
     user!: User;
 
-    @ManyToOne(() => Audio, (audio) => audio.games, { onDelete: 'SET NULL' })
+    @ManyToOne(() => Audio, (audio) => audio.quizzes, { onDelete: 'SET NULL' })
     @JoinColumn({ name: 'audioId' })
     audio: Audio;
 
-    @OneToMany(() => Question, (question) => question.game)
+    @OneToMany(() => Question, (question) => question.quiz)
     questions: Question[];
 
-    @OneToMany(() => Review, (review) => review.game)
+    @OneToMany(() => Review, (review) => review.quiz)
     reviews: Review[];
 
-    @ManyToMany(() => Tag, (tag) => tag.games, { cascade: ['insert'] })
+    @ManyToMany(() => Tag, (tag) => tag.quizzes, { cascade: ['insert'] })
     @JoinTable({
-        name: 'game_tags',
-        joinColumn: { name: 'gameId', referencedColumnName: 'id' },
+        name: 'quiz_tags',
+        joinColumn: { name: 'quizId', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
     })
     tags: Tag[];
 
-    @ManyToMany(() => User, (user) => user.favoriteGames)
+    @ManyToMany(() => User, (user) => user.favoriteQuizzes)
     favoriteBy: User[];
 
     @CreateDateColumn()

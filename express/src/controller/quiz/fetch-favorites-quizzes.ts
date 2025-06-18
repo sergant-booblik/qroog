@@ -1,12 +1,12 @@
 import { type Request, type Response } from 'express';
 import { getUserId } from '@/features/user/get-user-id';
 import { appDataSource } from '@/config/orm-config';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 import { Brackets } from 'typeorm';
 
 const PAGE_SIZE = 12;
 
-export async function fetchFavoritesGames(req: Request, res: Response): Promise<void> {
+export async function fetchFavoritesQuizzes(req: Request, res: Response): Promise<void> {
     try {
         const page = Number(req.query.page) || 1;
         const accessToken = req.cookies['accessToken'];
@@ -14,24 +14,24 @@ export async function fetchFavoritesGames(req: Request, res: Response): Promise<
         const routeUserId = Number(req.params.userId);
 
         if (userId !== routeUserId || !userId) {
-            res.status(403).json({ error: 'Failed to fetch games' });
+            res.status(403).json({ error: 'Failed to fetch quizzes' });
             return;
         }
 
-        const gameRepo = appDataSource.getRepository(Game);
+        const quizRepo = appDataSource.getRepository(Quiz);
 
-        const [favorites, total] = await gameRepo
-            .createQueryBuilder('game')
-            .leftJoin('game.favoriteBy', 'user')
-            .leftJoinAndSelect('game.user', 'owner')
+        const [favorites, total] = await quizRepo
+            .createQueryBuilder('quiz')
+            .leftJoin('quiz.favoriteBy', 'user')
+            .leftJoinAndSelect('quiz.user', 'owner')
             .where('user.id = :userId', { userId: routeUserId })
             .andWhere(
                 new Brackets(qb => {
-                    qb.where('game.isPublic = true')
+                    qb.where('quiz.isPublic = true')
                         .orWhere('owner.id = :userId', { userId: routeUserId });
                 }),
             )
-            .orderBy('game.createdDate', 'DESC')
+            .orderBy('quiz.createdDate', 'DESC')
             .skip((page - 1) * PAGE_SIZE)
             .take(PAGE_SIZE)
             .getManyAndCount();
@@ -47,6 +47,6 @@ export async function fetchFavoritesGames(req: Request, res: Response): Promise<
                 },
             });
     } catch (error) {
-        res.status(500).json({ error: `Failed to fetch games: ${error}` });
+        res.status(500).json({ error: `Failed to fetch quizzes: ${error}` });
     }
 }

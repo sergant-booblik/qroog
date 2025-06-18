@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Game } from '@/entity/game';
+import { Quiz } from '@/entity/quiz';
 import { Answer } from '@/entity/answer';
 import { QuestionType } from '@/types/question';
 
@@ -38,9 +38,9 @@ export class Question {
     @Column({ default: false })
     hasAllIn: boolean;
 
-    @ManyToOne(() => Game, (game) => game.questions, { onDelete: 'CASCADE' })
-    @JoinColumn({ name: 'gameId' })
-    game: Game;
+    @ManyToOne(() => Quiz, (quiz) => quiz.questions, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'quizId' })
+    quiz: Quiz;
 
     @OneToMany(() => Answer, (answer) => answer.question)
     answers: Answer[];
