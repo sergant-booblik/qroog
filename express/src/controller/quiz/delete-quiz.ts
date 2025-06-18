@@ -1,11 +1,11 @@
-import { Request, Response } from 'express';
+import { type Request, type Response } from 'express';
 import { getUserId } from '@/features/user/get-user-id';
 import { appDataSource } from '@/config/orm-config';
 import { Quiz } from '@/entity/quiz';
 
 export async function deleteQuiz(req: Request, res: Response): Promise<void> {
     try {
-        const quizId = req.params.id;
+        const quizId = req.params.quizId;
         const accessToken = req.cookies['accessToken'];
         const userId = await getUserId(accessToken).then((result) => result);
         const routeUserId = Number(req.params.userId);

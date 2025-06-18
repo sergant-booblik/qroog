@@ -6,7 +6,7 @@ import { Brackets } from 'typeorm';
 
 export async function fetchQuiz(req: Request, res: Response): Promise<void> {
     try {
-        const quizId = req.params.id;
+        const quizId = req.params.quizId;
         const accessToken = req.cookies['accessToken'];
         const userId = await getUserId(accessToken).then((result) => result);
         const routeUserId = Number(req.params.userId);
