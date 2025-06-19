@@ -20,8 +20,8 @@ export class Answer {
     @Column({ default: false })
     isTrue: boolean;
 
-    @Column({ default: 0 })
-    order: number;
+    @Column({ type: 'int', nullable: true })
+    order: number | null;
 
     @ManyToOne(() => Question, (question) => question.answers, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'questionId' })
