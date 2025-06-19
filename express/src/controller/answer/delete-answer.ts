@@ -3,12 +3,14 @@ import { appDataSource } from '@/config/orm-config';
 import { Answer } from '@/entity/answer';
 import { getQuizQuestion } from '@/utils/question';
 import { getQuestionAnswer } from '@/utils/answer';
+import { authorizeUser } from '@/utils/auth';
 
 export async function deleteAnswer(req: Request, res: Response): Promise<void> {
     try {
+        const userId = await authorizeUser(req, res);
         const question = await getQuizQuestion(req, res);
         const answer = await getQuestionAnswer(req, res);
-        if (!question || !answer) return;
+        if (!userId || !question || !answer) return;
 
         const answerRepo = appDataSource.getRepository(Answer);
 

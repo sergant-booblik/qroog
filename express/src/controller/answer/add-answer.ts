@@ -2,11 +2,13 @@ import type { Request, Response } from 'express';
 import { appDataSource } from '@/config/orm-config';
 import { getQuizQuestion } from '@/utils/question';
 import { Answer } from '@/entity/answer';
+import { authorizeUser } from '@/utils/auth';
 
 export async function addAnswer(req: Request, res: Response): Promise<void> {
     try {
+        const userId = await authorizeUser(req, res);
         const questionId = await getQuizQuestion(req, res);
-        if (!questionId) return;
+        if (!userId || !questionId) return;
 
         const answerRepo = appDataSource.getRepository(Answer);
 

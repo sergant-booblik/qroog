@@ -4,12 +4,14 @@ import { getOwnedQuiz } from '@/utils/quiz';
 import { Question } from '@/entity/question';
 import { Answer } from '@/entity/answer';
 import { getQuizQuestion } from '@/utils/question';
+import { authorizeUser } from '@/utils/auth';
 
 export async function deleteQuestion(req: Request, res: Response): Promise<void> {
     try {
+        const userId = await authorizeUser(req, res);
         const quiz = await getOwnedQuiz(req, res);
         const question = await getQuizQuestion(req, res);
-        if (!quiz || !question) return;
+        if (!quiz || !question || !userId) return;
 
         const questionRepo = appDataSource.getRepository(Question);
         const answerRepo = appDataSource.getRepository(Answer);
