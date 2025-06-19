@@ -14,7 +14,7 @@ export async function deleteAnswer(req: Request, res: Response): Promise<void> {
 
         const answerRepo = appDataSource.getRepository(Answer);
 
-        await answerRepo.softDelete(answer.id);
+        await answerRepo.delete(answer.id);
 
         res.status(200).json({ message: 'Answer deleted' });
     } catch (error) {

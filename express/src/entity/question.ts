@@ -1,12 +1,12 @@
 import {
     Column,
-    CreateDateColumn, DeleteDateColumn,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
 } from 'typeorm';
 import { Quiz } from '@/entity/quiz';
 import { Answer } from '@/entity/answer';
@@ -59,7 +59,4 @@ export class Question {
 
     @UpdateDateColumn()
     updatedDate: Date;
-
-    @DeleteDateColumn()
-    deletedDate: Date;
 }

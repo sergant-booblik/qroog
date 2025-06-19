@@ -1,6 +1,6 @@
 import {
     Column,
-    CreateDateColumn, DeleteDateColumn,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
@@ -32,7 +32,4 @@ export class Answer {
 
     @UpdateDateColumn()
     updatedDate: Date;
-
-    @DeleteDateColumn()
-    deletedDate: Date;
 }

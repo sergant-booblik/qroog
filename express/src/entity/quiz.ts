@@ -1,7 +1,6 @@
 import {
     Column,
     CreateDateColumn,
-    DeleteDateColumn,
     Entity, JoinColumn, JoinTable, ManyToMany,
     ManyToOne, OneToMany,
     PrimaryColumn,
@@ -88,7 +87,4 @@ export class Quiz {
 
     @UpdateDateColumn()
     updatedDate: Date;
-
-    @DeleteDateColumn()
-    deletedDate: Date;
 }

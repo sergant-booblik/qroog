@@ -2,7 +2,6 @@ import { type Request, type Response } from 'express';
 import { appDataSource } from '@/config/orm-config';
 import { getOwnedQuiz } from '@/utils/quiz';
 import { Question } from '@/entity/question';
-import { Answer } from '@/entity/answer';
 import { getQuizQuestion } from '@/utils/question';
 import { authorizeUser } from '@/utils/auth';
 
@@ -14,11 +13,8 @@ export async function deleteQuestion(req: Request, res: Response): Promise<void>
         if (!quiz || !question || !userId) return;
 
         const questionRepo = appDataSource.getRepository(Question);
-        const answerRepo = appDataSource.getRepository(Answer);
 
-        await answerRepo.softDelete({ question: { id: question.id } });
-
-        await questionRepo.softDelete(question.id);
+        await questionRepo.delete(question.id);
 
         res.status(200).json({ message: 'Question deleted' });
     } catch (error) {
