@@ -4,12 +4,12 @@
     "env.d.ts",
     "src",
     "tests",
-    "*.config.ts",
+    "*.config.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     }

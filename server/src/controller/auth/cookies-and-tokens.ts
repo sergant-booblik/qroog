@@ -1,6 +1,6 @@
 import { type Response } from 'express';
 import { sign } from 'jsonwebtoken';
-import { User } from '@/entity/user';
+import { type User } from '@/entity/user';
 
 function setCookie(res: Response, token: string, type: 'accessToken' | 'refreshToken', maxAge: number): void {
     res.cookie(type, token, {

@@ -1,5 +1,4 @@
 import { type Request, type Response } from 'express';
-import { Quiz } from '@/entity/quiz';
 import { appDataSource } from '@/config/orm-config';
 import { Question } from '@/entity/question';
 

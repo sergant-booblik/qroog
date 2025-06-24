@@ -10,4 +10,4 @@ import { RouterView } from 'vue-router';
 // useTheme();
 </script>
 
-<style src="css/style.css" />
+<style src="../css/style.css" />
