@@ -8,6 +8,12 @@ import { EmailType } from '@/types/email';
 export async function requestCode(req: Request, res: Response): Promise<void> {
     const { email, locale } = req.body;
 
+    const loginCodeRep = appDataSource.getRepository(LoginCode);
+
+    const existingCode = loginCodeRep.findOne({
+      where: { email },
+    });
+
     const uid = new ShortUniqueId({
         dictionary: 'number',
     });
@@ -20,17 +26,24 @@ export async function requestCode(req: Request, res: Response): Promise<void> {
     loginCode.code = code;
     loginCode.expiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
-    await appDataSource.getRepository(LoginCode).save(loginCode);
+    if (!existingCode) {
+      await loginCodeRep.save(loginCode);
 
-    await sendEmail({
+      await sendEmail({
         type: EmailType.SEND_VERIFICATION_CODE,
         to: email,
         code,
         locale,
-    });
+      });
 
-    res.status(200).send({
+      res.status(200).send({
         success: true,
         message: 'Auth.Code.Send.success',
-    });
+      });
+    } else {
+      res.status(429).send({
+        success: false,
+        message: 'Auth.Code.Send.failed',
+      });
+    }
 }

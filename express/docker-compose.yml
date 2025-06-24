@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  qroog_postgres:
+    image: postgres:17
+    container_name: qroog_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${ORM_CONFIG_PORT}:5432"
+    volumes:
+      - qroog_pgdata:/var/lib/postgresql/data
+
+  qroog_redis:
+    image: redis:7
+    container_name: qroog_redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - qroog_redisdata:/data
+
+volumes:
+  qroog_pgdata:
+  qroog_redisdata:
