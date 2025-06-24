@@ -1,13 +1,13 @@
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-    ***REMOVED***
-    ***REMOVED***
+    host: process.env.TIMEWEB_SMTP_HOST,
+    port: Number(process.env.TIMEWEB_SMTP_PORT),
     auth: {
-        ***REMOVED***
-        ***REMOVED***
+        user: process.env.TIMEWEB_SMTP_USER,
+        pass: process.env.TIMEWEB_SMTP_PASS,
     },
-    ***REMOVED***
+    from: process.env.TIMEWEB_SMTP_FROM,
 });
 
 export default transporter;
