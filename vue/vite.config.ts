@@ -3,8 +3,9 @@ import { fileURLToPath, URL } from 'node:url';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import eslintPlugin from 'vite-plugin-eslint';
+import eslint from 'vite-plugin-eslint';
 import svgLoaderPlugin from 'vite-svg-loader';
+import tailwindcss from '@tailwindcss/vite'
 
 function createSvgLoaderPlugin(): Plugin<any> {
   return svgLoaderPlugin({
@@ -18,17 +19,18 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "scss/colors/index.scss";',
+        additionalData: '@use "scss/colors/index.css";',
       },
     },
   },
   plugins: [
     vue(),
-    eslintPlugin({
+    eslint({
       cache: false,
       emitWarning: true,
       failOnError: true,
     }),
+    tailwindcss(),
     createSvgLoaderPlugin(),
   ],
   resolve: {

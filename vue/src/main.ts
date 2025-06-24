@@ -16,6 +16,6 @@ app.use(router);
 // const initial = getStoredTheme() || getInitialTheme();
 // applyTheme(initial);
 initI18n().then(() => {
-    app.use(i18n);
-    app.mount('#app');
+  app.use(i18n);
+  app.mount('#app');
 });
