@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
-import HomeView from '@/views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue';
+import DashboardView from '@/views/DashboardView.vue';
+import AuthView from '@/views/AuthView.vue';
 
 export enum RouteName {
   HOME = 'HOME',
+  AUTH = 'AUTH',
+  DASHBOARD = 'DASHBOARD',
 
   // not created yet
   PARTNER = 'PARTNER',
@@ -16,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
+    path: '/auth',
+    name: RouteName.AUTH,
+    component: AuthView,
+  },
+  {
     path: '/partner',
     name: RouteName.PARTNER,
     component: HomeView,
@@ -24,6 +33,17 @@ const routes: Array<RouteRecordRaw> = [
     path: '/premium',
     name: RouteName.PREMIUM,
     component: HomeView,
+  },
+  {
+    path: '/cp',
+    meta: { auth: true },
+    children: [
+      {
+        path: '',
+        name: RouteName.DASHBOARD,
+        component: DashboardView,
+      },
+    ]
   },
 ];
 
