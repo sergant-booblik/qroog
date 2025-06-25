@@ -19,7 +19,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "scss/colors/colors.css";',
+        additionalData: '@use "scss/colors/fonts.css";',
       },
     },
   },
@@ -36,7 +36,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      'scss': fileURLToPath(new URL('./scss', import.meta.url)),
+      'css': fileURLToPath(new URL('./css', import.meta.url)),
     },
   },
   test: {
