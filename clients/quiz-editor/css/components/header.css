@@ -1,0 +1,62 @@
+.header {
+    @apply relative;
+    @apply h-[70px];
+    @apply bg-light;
+}
+
+.header__logo {
+    @apply flex items-center;
+}
+
+.header__wrapper {
+    @apply flex justify-between items-center;
+    @apply h-full;
+    @apply px-4 py-2.5 md:px-8 md:py-5;
+}
+
+.header__menu {
+    @apply flex items-center gap-5;
+    @apply h-full;
+}
+
+.header__mobile-menu {
+    @apply flex items-center;
+    @apply lg:hidden;
+}
+
+.header__dropdown {
+    @apply -top-full left-0 opacity-0 -z-10;
+    @apply absolute;
+    @apply flex flex-col gap-4;
+    @apply w-screen h-[calc(100vh-70px)];
+    @apply px-4 py-4 md:px-8 md:py-5;
+    @apply bg-white;
+    @apply transition-all;
+
+    &.header__dropdown--opened {
+        @apply top-full opacity-100 z-0;
+    }
+
+    .header-dropdown__delimiter {
+        @apply w-full h-px;
+        @apply bg-dark-secondary;
+    }
+}
+
+.header__controls {
+    @apply hidden items-center gap-5;
+    @apply lg:flex;
+}
+
+.header__lang-switcher {
+
+}
+
+.header__delimiter {
+    @apply w-px h-full;
+    @apply bg-dark-secondary;
+}
+
+.header__buttons {
+    @apply flex items-center gap-3;
+}
