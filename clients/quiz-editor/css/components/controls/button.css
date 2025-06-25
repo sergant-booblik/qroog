@@ -1,0 +1,57 @@
+.button {
+    @apply rounded-sm;
+    @apply text-base;
+    @apply cursor-pointer;
+
+    .button__wrapper {
+        @apply flex items-center justify-center gap-1;
+        @apply px-4 py-1.5;
+        @apply rounded-sm;
+    }
+
+    &:active {
+        @apply translate-y-0.5;
+    }
+
+    &:hover {
+        .button__wrapper {
+            @apply bg-dark-primary/5;
+        }
+    }
+
+    &.button--flex {
+        @apply w-full;
+    }
+
+    &.button--primary-warm {
+        @apply bg-primary-warm;
+        @apply text-light;
+    }
+
+    &.button--secondary {
+        @apply bg-light-gary;
+        @apply text-dark-primary;
+    }
+
+    &.button--ghost {
+        @apply bg-transparent;
+        @apply text-dark-primary;
+
+        .button__wrapper {
+            @apply bg-transparent;
+        }
+    }
+
+    &.button--large {
+        @apply text-xl;
+
+        .button__wrapper {
+            @apply px-5 py-3;
+            @apply rounded-sm;
+        }
+
+        .button__icon svg {
+            @apply w-6 h-6;
+        }
+    }
+}

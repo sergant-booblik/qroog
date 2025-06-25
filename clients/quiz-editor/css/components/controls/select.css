@@ -1,0 +1,54 @@
+.select {
+    @apply relative;
+    @apply inline-block;
+    @apply w-full;
+    @apply text-left;
+}
+
+.select-button {
+    @apply flex items-center justify-between gap-2.5;
+    @apply w-full;
+    @apply px-3 py-2;
+    @apply rounded-md;
+    @apply cursor-pointer;
+    @apply bg-light-gary text-dark-primary;
+
+    &.select-button--opened {
+        @apply rounded-b-none;
+
+        .select-chevron {
+            @apply rotate-180;
+        }
+    }
+}
+
+.select-item {
+    @apply flex items-center gap-2;
+
+    svg {
+        @apply w-4 h-4;
+    }
+}
+
+.select-chevron {
+    @apply transition-all;
+}
+
+.select-dropdown {
+    @apply absolute z-10;
+    @apply w-full;
+    @apply rounded-b-sm;
+    @apply bg-light-gary;
+}
+
+.select-option {
+    @apply flex items-center gap-2;
+    @apply w-full;
+    @apply px-3 py-2;
+    @apply cursor-pointer;
+    @apply text-dark-primary hover:bg-dark-muted;
+
+    &:last-child {
+        @apply rounded-b-sm;
+    }
+}

@@ -1,0 +1,23 @@
+.link {
+    @apply relative;
+    @apply flex items-center gap-1.5;
+    @apply text-dark-primary;
+
+    &:after {
+        @apply content-[''];
+        @apply absolute bottom-0;
+        @apply w-0 h-px;
+        @apply bg-dark-primary;
+        @apply transition-all;
+    }
+
+    &:hover {
+        &:after {
+            @apply w-full;
+        }
+    }
+}
+
+.link-icon {
+    @apply text-primary-warm;
+}
