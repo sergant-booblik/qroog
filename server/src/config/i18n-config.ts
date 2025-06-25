@@ -38,7 +38,7 @@ export async function getTranslations(locale: string): Promise<any> {
 
         const json = await res.json();
 
-        await redis.set(cacheKey, JSON.stringify(json[locale]), 'EX', 60 );
+        await redis.set(cacheKey, JSON.stringify(json[locale]), 'EX', 60 * 60 * 24 );
         return json[locale];
     }
 
