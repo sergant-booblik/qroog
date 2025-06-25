@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { createI18n, type Locale } from 'vue-i18n';
+import { useTranslationStore } from '@/store/translation'
 // import { useProfileStore } from '@/store/profile';
-// import { useTranslationStore } from '@/store/translation';
 
 export const LOCALE_STORAGE_KEY = 'locale';
 
@@ -18,16 +18,11 @@ export function calculateCurrentLocale(): Locale {
         return storedLocale as Locale;
     }
 
-    const browserLocale = navigator.language.slice(0, 2) || navigator.languages?.[ 0 ].slice(0, 2) || 'en';
+    const browserLocale = navigator.language;
 
     localStorage.setItem(LOCALE_STORAGE_KEY, browserLocale);
     return browserLocale as Locale;
 
-}
-
-export function setLocale(locale: string): void {
-    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
-    i18n.global.locale.value = calculateCurrentLocale();
 }
 
 export const pluralizationRule = (choice: number, choicesLength: number): number => {
@@ -47,22 +42,32 @@ export const pluralizationRule = (choice: number, choicesLength: number): number
 
 const i18n = createI18n({
     legacy: false,
-    locale: 'en',
-    fallbackLocale: 'en',
+    locale: 'en-US',
+    fallbackLocale: 'en-US',
     messages: {},
     pluralRules: {
         ru: pluralizationRule,
     },
 });
 
+export async function setLocale(locale: string): Promise<void> {
+    const translationStore = useTranslationStore();
+    await translationStore.fetchTranslations(locale);
+    const localeMessage = translationStore.translations ?? {};
+    i18n.global.setLocaleMessage(locale, localeMessage);
+    i18n.global.locale.value = locale;
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+}
+
 export async function initI18n(): Promise<void> {
     const locale = calculateCurrentLocale() as Locale;
-    // const translationStore = useTranslationStore();
-    // await translationStore.fetchTranslations(locale);
+    const translationStore = useTranslationStore();
+    await translationStore.fetchLanguages();
+    await translationStore.fetchTranslations(locale);
 
-    // const localeMessage = translationStore.translation?.[locale] ?? {};
+    const localeMessage = translationStore.translations ?? {};
 
-    // i18n.global.setLocaleMessage(locale, localeMessage);
+    i18n.global.setLocaleMessage(locale, localeMessage);
     i18n.global.locale.value = locale;
 }
 
