@@ -1,4 +1,4 @@
-import type { Language } from '@/type/translation.ts'
+import type { Language } from '@/type/translation'
 
 export interface FetchLanguagesResponse {
   languages: Language[],

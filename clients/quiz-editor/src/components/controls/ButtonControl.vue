@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ButtonColor, ButtonSize } from '@/type/button.ts'
+import { ButtonColor, ButtonSize } from '@/type/button'
 import type { Component } from 'vue'
 
 interface Props {

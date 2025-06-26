@@ -53,7 +53,7 @@
 }
 
 .header__delimiter {
-    @apply w-px h-full;
+    @apply w-px h-8;
     @apply bg-dark-secondary;
 }
 

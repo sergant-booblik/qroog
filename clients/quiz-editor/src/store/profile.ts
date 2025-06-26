@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { api } from '@/api';
-import { type Profile } from '@/type/profile.ts';
-import { type FetchProfileResponse } from '@/api/profile/fetch-profile.ts'
+import { type Profile } from '@/type/profile';
+import { type FetchProfileResponse } from '@/api/profile/fetch-profile'
 
 interface ProfileState {
   profile: Profile | undefined,

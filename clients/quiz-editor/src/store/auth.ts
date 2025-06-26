@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 import { api } from '@/api';
-import { useProfileStore } from '@/store/profile.ts';
+import { useProfileStore } from '@/store/profile';
 import { RouteName } from '@/router';
-import { type ErrorData } from '@/type/error.ts';
-import { type VerifyTokenResponse } from '@/api/auth/verify-token.ts';
-import { type RefreshTokenResponse } from '@/api/auth/refresh-token.ts';
+import { type ErrorData } from '@/type/error';
+import { type VerifyTokenResponse } from '@/api/auth/verify-token';
+import { type RefreshTokenResponse } from '@/api/auth/refresh-token';
 import { type Router } from 'vue-router';
 
 interface AuthState {

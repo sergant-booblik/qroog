@@ -1,4 +1,4 @@
-import type { Profile } from '@/type/profile.ts';
+import type { Profile } from '@/type/profile';
 
 export interface FetchProfileResponse {
   profile: Profile,

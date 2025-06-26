@@ -2,24 +2,24 @@ import {
   createFetchTranslationsFunction,
   type FetchTranslationsRequest,
   type FetchTranslationsResponse,
-} from '@/api/translation/fetch-translation.ts'
+} from '@/api/translation/fetch-translation'
 import {
   createFetchLanguagesFunction,
   type FetchLanguagesResponse,
-} from '@/api/translation/fetch-languages.ts'
+} from '@/api/translation/fetch-languages'
 import {
   createVerifyTokenFunction,
   type VerifyTokenResponse,
-} from '@/api/auth/verify-token.ts'
+} from '@/api/auth/verify-token'
 import {
   createRefreshTokenFunction,
   type RefreshTokenResponse,
-} from '@/api/auth/refresh-token.ts'
+} from '@/api/auth/refresh-token'
 import {
   createFetchProfileFunction,
   type FetchProfileResponse,
-} from '@/api/profile/fetch-profile.ts';
-import { createLogoutFunction, type LogoutResponse } from '@/api/auth/logout.ts';
+} from '@/api/profile/fetch-profile';
+import { createLogoutFunction, type LogoutResponse } from '@/api/auth/logout';
 
 interface Api {
   verifyToken: () => Promise<VerifyTokenResponse>,

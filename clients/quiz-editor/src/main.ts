@@ -4,7 +4,7 @@ import App from '@/App.vue';
 import router from '@/router';
 import { BootstrapIconsPlugin } from 'bootstrap-icons-vue';
 import i18n, { initI18n } from '@/logic/i18n';
-import { setupRouterGuard } from '@/logic/setup-router-guard.ts'
+import { setupRouterGuard } from '@/logic/setup-router-guard'
 
 const app = createApp(App);
 const pinia = createPinia();

@@ -31,6 +31,9 @@ export default {
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/explicit-module-boundary-types': ['error'],
+    'import/extensions': ['error', 'ignorePackages', {
+      ts: 'never',
+    }],
     '@typescript-eslint/explicit-function-return-type': ['warn', {
       allowExpressions: true,
       allowTypedFunctionExpressions: true,

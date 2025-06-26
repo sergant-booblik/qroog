@@ -1,4 +1,4 @@
-import type { VerifyTokenResponse } from '@/api/auth/verify-token.ts'
+import type { VerifyTokenResponse } from '@/api/auth/verify-token'
 
 export interface RefreshTokenResponse {
   success: boolean,

@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
 import { BIconChevronDown } from 'bootstrap-icons-vue';
-import type { SelectItem } from '@/type/select.ts';
+import type { SelectItem } from '@/type/select';
 import { onClickOutside } from '@vueuse/core'
 
 function toggle() {

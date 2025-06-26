@@ -1,4 +1,4 @@
-import type { Translations } from '@/type/translation.ts'
+import type { Translations } from '@/type/translation'
 
 export interface FetchTranslationsRequest {
   lang: string,
