@@ -18,6 +18,8 @@
       :name="id"
       :type="type"
       :disabled="disabled"
+      :pattern="pattern"
+      :inputmode="inputmode"
       autocomplete="false"
       class="input__field"
     />
@@ -44,7 +46,9 @@ import { useSmartT } from '@/logic/i18n.ts';
 interface Props {
   modelValue: string | number,
   disabled?: boolean,
-  type?: InputType
+  type?: InputType,
+  pattern?: string,
+  inputmode?: 'search' | 'text' | 'email' | 'tel' | 'url' | 'none' | 'numeric' | 'decimal' | undefined,
   label?: string,
   flex?: boolean,
   id: string,

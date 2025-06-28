@@ -16,7 +16,9 @@
             :label="t('Auth.Card.Form.Input.Code.label')"
             :disabled="loading"
             :errors="errors?.code"
-            :type="InputType.NUMBER"
+            :type="InputType.TEXT"
+            inputmode="numeric"
+            pattern="[0-9]*"
             @change="authStore.clearFieldError('code')"
           />
           <div class="auth__description">
