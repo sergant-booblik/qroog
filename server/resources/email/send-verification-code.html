@@ -1,6 +1,56 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>{{t:Mail.VerificationCode.subject}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 22px;
+            color: #333333;
+        }
+        p {
+            font-size: 16px;
+            color: #555555;
+        }
+        .code {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: monospace;
+            color: #000000;
+            letter-spacing: 4px;
+            margin: 20px 0;
+        }
+        .footer {
+            font-size: 12px;
+            color: #aaaaaa;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
     <body>
-        <p>{{t:Mail.VerificationCode.body}}</p>
+    <div class="container">
+        <h1>{{t:Mail.VerificationCode.title}}</h1>
+        <p>{{t:Mail.VerificationCode.Before.text}}</p>
+        <div class="code">{{code}}</div>
+        <p>{{t:Mail.VerificationCode.After.text}}</p>
+
+        <div class="footer">
+            {{t:Mail.VerificationCode.disclaimer}}
+        </div>
+    </div>
     </body>
 </html>

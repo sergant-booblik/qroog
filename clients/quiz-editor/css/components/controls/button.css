@@ -4,10 +4,13 @@
     @apply cursor-pointer;
 
     .button__wrapper {
+        @apply relative;
+        @apply overflow-hidden;
         @apply flex items-center justify-center gap-1;
         @apply px-4 py-1.5;
         @apply rounded-sm;
         @apply whitespace-nowrap;
+        @apply transition-all;
     }
 
     &:active {
@@ -53,6 +56,47 @@
 
         .button__icon svg {
             @apply w-6 h-6;
+        }
+    }
+
+    &.button--loading {
+        .button__wrapper {
+            &::before {
+                @apply content-[''];
+                @apply absolute top-0 -left-[150%];
+                @apply w-[300%] h-full;
+                @apply bg-repeat;
+                background-image: repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.2) 20px,
+                    transparent 20px,
+                    transparent 40px
+                );
+                @apply animate-move-stripes;
+            }
+        }
+    }
+
+    &.button--success {
+        svg {
+            @apply w-6 h-6;
+        }
+    }
+
+    &.button--disabled {
+        @apply opacity-50;
+        @apply grayscale-25;
+        @apply cursor-not-allowed;
+
+        &:hover {
+            .button__wrapper {
+                @apply bg-dark-primary/0;
+            }
+        }
+
+        &:active {
+            @apply translate-y-0;
         }
     }
 }

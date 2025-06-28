@@ -10,9 +10,11 @@ export async function verifyCode(req: Request, res: Response): Promise<void> {
 
     const loginCodeRepo = appDataSource.getRepository(LoginCode);
     const codeEntry = await loginCodeRepo.findOne({
-        where: { email, code, used: false },
+        where: { email, code },
         order: { expiresAt: 'DESC' },
     });
+
+    console.log(codeEntry);
 
     if (!codeEntry || codeEntry.expiresAt < new Date()) {
         res.status(400).send({

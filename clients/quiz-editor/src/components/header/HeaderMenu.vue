@@ -1,12 +1,14 @@
 <template>
   <LinkControl
-    :title="t('Header.Menu.Link.Partners.title')"
-    :route="RouteName.PARTNER"
+    :label="t('Header.Menu.Link.Partners.title')"
+    :route="{ name: RouteName.PARTNER }"
+    :color="LinkColor.GHOST"
   />
   <LinkControl
-    :title="t('Header.Menu.Link.Premium.title')"
+    :label="t('Header.Menu.Link.Premium.title')"
     :icon="BIconStarFill"
-    :route="RouteName.PREMIUM"
+    :route="{ name: RouteName.PREMIUM }"
+    :color="LinkColor.GHOST"
   />
 </template>
 
@@ -14,9 +16,10 @@
 import { RouteName } from '@/router';
 import { BIconStarFill } from 'bootstrap-icons-vue';
 import LinkControl from '@/components/controls/LinkControl.vue';
-import { useI18n } from 'vue-i18n';
+import { LinkColor } from '@/type/link.ts';
+import { useSmartT } from '@/logic/i18n.ts';
 
-const { t } = useI18n();
+const t = useSmartT();
 </script>
 
 <style scoped>

@@ -2,39 +2,49 @@
   <template v-if="href">
     <a
       :href="href"
-      class="link"
+      :class="[
+        'link',
+        `link--${color}`
+      ]"
     >
       <component
         :is="icon"
         class="link-icon"
       />
-      <span>{{ title }}</span>
+      <span>{{ label }}</span>
     </a>
   </template>
   <template v-else-if="route">
     <RouterLink
-      :to="{ name: route }"
-      class="link"
+      :to="route"
+      :class="[
+        'link',
+        `link--${color}`
+      ]"
     >
       <component
         :is="icon"
         class="link-icon"
       />
-      <span>{{ title }}</span>
+      <span>{{ label }}</span>
     </RouterLink>
   </template>
 </template>
 
 <script setup lang="ts">
-import type { RouteName } from '@/router'
-import type { Component } from 'vue'
+import { type Component } from 'vue';
+import { type RouteLocationRaw } from 'vue-router';
+import { LinkColor } from '@/type/link.ts';
 
 interface Props {
-  title: string,
+  label: string,
   icon?: Component,
   href?: string,
-  route?: RouteName,
+  route?: RouteLocationRaw,
+  color?: LinkColor,
 }
 
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+  color: LinkColor.PRIMARY,
+});
 </script>

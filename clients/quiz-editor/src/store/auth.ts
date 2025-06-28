@@ -6,6 +6,9 @@ import { type ErrorData } from '@/type/error';
 import { type VerifyTokenResponse } from '@/api/auth/verify-token';
 import { type RefreshTokenResponse } from '@/api/auth/refresh-token';
 import { type Router } from 'vue-router';
+import type { RequestCodeResponse } from '@/api/auth/send-code.ts';
+import { calculateCurrentLocale } from '@/logic/i18n.ts';
+import type { VerifyCodeResponse } from '@/api/auth/verify-code.ts';
 
 interface AuthState {
   isAuth: boolean,
@@ -26,6 +29,39 @@ export const useAuthStore = defineStore('auth', {
     loading: false,
   }),
   actions: {
+    clearAllErrors(): void {
+      this.errors = undefined;
+    },
+    clearFieldError(filed: keyof ErrorData): void {
+      if (this.errors) {
+        this.errors[filed] = undefined;
+      }
+    },
+    async requestCode(email: string): Promise<RequestCodeResponse> {
+      this.loading = true;
+      this.errors = undefined;
+      const locale = calculateCurrentLocale();
+      try {
+        return await api.requestCode({ email, locale });
+      } catch (errors) {
+        this.errors = (errors as { error: ErrorData }).error;
+        throw errors;
+      } finally {
+        this.loading = false;
+      }
+    },
+    async verifyCode(email: string, code: string): Promise<VerifyCodeResponse> {
+      this.loading = true;
+      this.errors = undefined;
+      try {
+        return await api.verifyCode({ email, code });
+      } catch (errors) {
+        this.errors = (errors as { error: ErrorData }).error;
+        throw errors;
+      } finally {
+        this.loading = false;
+      }
+    },
     async verifyToken(): Promise<VerifyTokenResponse> {
       this.loading = true;
       try {

@@ -1,0 +1,25 @@
+.auth__wrapper {
+    @apply flex items-center justify-center;
+    @apply w-full h-[calc(100vh-70px)];
+}
+
+.auth__card {
+    @apply flex flex-col gap-8;
+    @apply max-w-full w-96;
+    @apply py-6 px-6;
+    @apply rounded-sm;
+    @apply bg-light;
+}
+
+.auth-card__title {
+    @apply flex items-center gap-2.5;
+}
+
+.auth__form {
+    @apply flex flex-col gap-8;
+}
+
+.auth__link {
+    @apply flex gap-1;
+    @apply text-dark-primary text-sm;
+}

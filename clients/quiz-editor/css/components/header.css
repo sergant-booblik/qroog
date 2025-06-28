@@ -2,6 +2,10 @@
     @apply relative;
     @apply h-[70px];
     @apply bg-light;
+
+    :has(.header__dropdown--opened) {
+        @apply z-10;
+    }
 }
 
 .header__logo {
@@ -40,6 +44,10 @@
     .header-dropdown__delimiter {
         @apply w-full h-px;
         @apply bg-dark-secondary;
+    }
+
+    .link {
+        @apply w-fit;
     }
 }
 

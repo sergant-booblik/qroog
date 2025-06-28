@@ -1,3 +1,9 @@
+export enum ButtonType {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+  CANCEL = 'cancel',
+}
+
 export enum ButtonColor {
   PRIMARY_WARM = 'primary-warm',
   PRIMARY_COOL = 'primary-cool',

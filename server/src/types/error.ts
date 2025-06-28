@@ -3,4 +3,4 @@ export interface ErrorDetail {
   params?: Record<string, any>,
 }
 
-export type ErrorData = Record<string, ErrorDetail[] | undefined>;
+export type ErrorData = Record<string, ErrorDetail[]>;

@@ -35,8 +35,9 @@ async function sendVerificationCodeEmail(data: SendVerificationCodeEmailData, i1
 }
 
 export async function sendEmail(data: EmailData): Promise<void> {
-    const translations = await getTranslations(data.locale);
-    const i18next = await createI18nInstance(data.locale ?? 'en-US', translations);
+    const locale = data.locale ?? 'en-US';
+    const translations = await getTranslations(locale);
+    const i18next = await createI18nInstance(locale, translations);
     switch (data.type) {
         case EmailType.SEND_VERIFICATION_CODE:
             await sendVerificationCodeEmail(data, i18next, translations);

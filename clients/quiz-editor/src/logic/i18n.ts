@@ -1,17 +1,38 @@
-// eslint-disable-next-line no-restricted-imports
-import { createI18n, type Locale } from 'vue-i18n';
+import { createI18n, type Locale, useI18n } from 'vue-i18n';
 import { useTranslationStore } from '@/store/translation'
-// import { useProfileStore } from '@/store/profile';
+import { useProfileStore } from '@/store/profile';
+import { IntlMessageFormat } from 'intl-messageformat';
 
 export const LOCALE_STORAGE_KEY = 'locale';
 
-export function calculateCurrentLocale(): Locale {
-    // const profileStore = useProfileStore();
+export function useSmartT() {
+    const { locale, t } = useI18n();
 
-    // const profileLocale = profileStore.profile?.locale as Locale;
-    // if (profileLocale) {
-    //     return profileLocale as Locale;
-    // }
+    return (key: string, params: Record<string, any> = {}) => {
+        const rawMessage = t(key, params);
+        const isIcu = rawMessage.includes('{') && rawMessage.includes('plural');
+
+        if (!isIcu) {
+            return rawMessage;
+        }
+
+        try {
+            const msg = new IntlMessageFormat(rawMessage, locale.value);
+            return msg.format(params);
+        } catch (e) {
+            return rawMessage;
+        }
+    };
+}
+
+
+export function calculateCurrentLocale(): Locale {
+    const profileStore = useProfileStore();
+
+    const profileLocale = profileStore.profile?.locale as Locale;
+    if (profileLocale) {
+        return profileLocale as Locale;
+    }
 
     const storedLocale = localStorage.getItem(LOCALE_STORAGE_KEY) as Locale;
     if (storedLocale) {

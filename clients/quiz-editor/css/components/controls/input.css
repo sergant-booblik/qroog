@@ -1,0 +1,55 @@
+.input__control {
+    @apply flex flex-col gap-1;
+}
+
+.input__control--disabled {
+    .input__field {
+        @apply opacity-40;
+        @apply cursor-not-allowed;
+    }
+}
+
+.input__control--flex {
+    @apply w-full;
+
+    .input__field {
+        @apply w-full;
+    }
+}
+
+.input__control--invalid {
+    @apply animate-shake;
+
+    .input__label {
+        @apply text-danger;
+    }
+    .input__field {
+        @apply bg-danger-light;
+        @apply border-danger;
+        @apply text-danger;
+    }
+}
+
+.input__label {
+    @apply text-dark-primary;
+}
+
+.input__field {
+    @apply min-h-9;
+    @apply px-2 py-1;
+    @apply rounded-sm;
+    @apply border border-dark-muted;
+    @apply text-dark-primary;
+    @apply bg-white;
+
+    &[type=number] {
+        &::-webkit-inner-spin-button {
+            @apply hidden m-0;
+        }
+    }
+}
+
+.input__error-list {
+    @apply text-xs;
+    @apply text-danger;
+}

@@ -9,6 +9,11 @@
     --color-dark-primary: #37474F;
     --color-dark-secondary: #607D8B;
     --color-dark-muted: #90A4AE;
+    --color-danger: #D32F2F;
+    --color-danger-light: #FFEBEE;
 
     --font-sans: "Montserrat", "sans-serif";
+
+    --animate-shake: shake 150ms;
+    --animate-move-stripes: move-stripes 5s linear infinite;
 }

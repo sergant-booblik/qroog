@@ -28,7 +28,7 @@ appDataSource.initialize().then(async () => {
         console.log(`Listening to port ${PORT}`);
     });
 
-    nodeCron.schedule('*/10 * * * *', async () => {
+    nodeCron.schedule('*/5 * * * *', async () => {
         const loginCodeRepo = appDataSource.getRepository(LoginCode);
         await loginCodeRepo
             .createQueryBuilder()

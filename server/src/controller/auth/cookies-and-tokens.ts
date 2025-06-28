@@ -1,6 +1,9 @@
 import { type Response, type Request } from 'express';
 import { sign, verify } from 'jsonwebtoken';
 import { type User } from '@/entity/user';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 function setCookie(res: Response, token: string, type: 'accessToken' | 'refreshToken', maxAge: number): void {
     res.cookie(type, token, {
