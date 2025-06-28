@@ -5,7 +5,7 @@ export interface FetchProfileResponse {
 }
 
 export function createFetchProfileFunction(apiUrl: string): () => Promise<FetchProfileResponse> {
-  const url = new URL(`${apiUrl}/profile/my/`);
+  const url = new URL(`${apiUrl}/1/profile/my/`);
   return (): Promise<FetchProfileResponse> => fetch(url.toString(), {
     method: 'GET',
     credentials: 'include',

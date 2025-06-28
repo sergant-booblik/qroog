@@ -1,0 +1,13 @@
+.dropdown {
+    @apply relative;
+}
+
+.dropdown__button {
+    @apply cursor-pointer;
+}
+
+.dropdown__body {
+    @apply absolute right-0;
+    @apply min-w-full w-[calc(100vw-30px)] sm:w-fit;
+    @apply mt-1;
+}

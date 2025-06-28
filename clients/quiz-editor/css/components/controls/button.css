@@ -32,6 +32,11 @@
         @apply text-light;
     }
 
+    &.button--primary-cool {
+        @apply bg-primary-cool;
+        @apply text-light;
+    }
+
     &.button--secondary {
         @apply bg-light-gary;
         @apply text-dark-primary;
@@ -40,6 +45,15 @@
     &.button--ghost {
         @apply bg-transparent;
         @apply text-dark-primary;
+
+        .button__wrapper {
+            @apply bg-transparent;
+        }
+    }
+
+    &.button--danger-ghost {
+        @apply bg-transparent;
+        @apply text-danger;
 
         .button__wrapper {
             @apply bg-transparent;
@@ -56,6 +70,19 @@
 
         .button__icon svg {
             @apply w-6 h-6;
+        }
+    }
+
+    &.button--small {
+        @apply text-sm;
+
+        .button__wrapper {
+            @apply px-1 py-1;
+            @apply rounded-sm;
+        }
+
+        .button__icon svg {
+            @apply w-3 h-3;
         }
     }
 

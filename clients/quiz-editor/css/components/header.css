@@ -12,6 +12,10 @@
     @apply flex items-center;
 }
 
+.header__right {
+    @apply flex items-center gap-5;
+}
+
 .header__wrapper {
     @apply flex justify-between items-center;
     @apply h-full;
@@ -67,4 +71,105 @@
 
 .header__buttons {
     @apply flex items-center gap-3;
+}
+
+.dropdown--profile {
+    .profile__button {
+        @apply flex items-center gap-2;
+    }
+
+    .profile__avatar {
+        svg {
+            @apply w-10 h-10;
+            @apply text-dark-muted;
+        }
+    }
+
+    .profile__toggle {
+        @apply items-center gap-1;
+        @apply hidden lg:flex;
+    }
+
+    .profile__settings {
+        @apply flex flex-col gap-2;
+        @apply p-3 pb-1.5 sm:p-5 sm:pb-3;
+        @apply rounded-sm;
+        @apply border border-light-gary;
+        @apply bg-white;
+    }
+
+    .settings__main {
+        @apply overflow-hidden;
+        @apply flex flex-col sm:flex-row items-start sm:items-center gap-4;
+        @apply p-2.5;
+        @apply rounded-sm;
+        @apply bg-light-gary;
+    }
+
+    .settings__right {
+        @apply overflow-hidden;
+        @apply max-w-full;
+        @apply flex items-center gap-2;
+    }
+
+    .settings__logout {
+        .button__wrapper {
+            @apply px-1;
+        }
+    }
+
+    .profile__about {
+        @apply max-w-[calc(100%-3rem)];
+    }
+
+    .profile__username {
+        @apply max-w-full;
+        @apply overflow-hidden;
+        @apply text-ellipsis;
+    }
+
+    .profile__email {
+        @apply text-xs;
+        @apply text-dark-muted;
+    }
+
+    .settings__buttons {
+        @apply flex gap-2 flex-col sm:flex-row;
+
+        .header__lang-switcher,
+        .button {
+            @apply w-full;
+        }
+
+        .button {
+            .button__wrapper {
+                @apply justify-start sm:justify-center
+            }
+        }
+    }
+
+    .settings__links {
+        @apply flex flex-col gap-2 lg:hidden;
+
+        .link {
+            @apply relative;
+            @apply px-4 py-1.5;
+            @apply rounded-sm;
+            @apply whitespace-nowrap;
+            @apply bg-light;
+
+            &:after {
+                @apply opacity-0;
+                @apply left-0;
+                @apply w-full h-full;
+                @apply rounded-sm;
+            }
+
+            &:hover {
+                &:after {
+                    @apply opacity-20;
+                }
+            }
+        }
+    }
 }

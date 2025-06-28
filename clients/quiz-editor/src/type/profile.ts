@@ -6,7 +6,9 @@ export enum Theme {
 export interface Profile {
   id: number,
   email: string,
-  username: string | undefined,
+  username: string,
+  imageUrl: string | undefined,
+  isBLocked: boolean,
   locale: string,
   theme: Theme,
 }

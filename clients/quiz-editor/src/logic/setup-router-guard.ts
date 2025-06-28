@@ -14,17 +14,17 @@ export function setupRouterGuard(router: Router, pinia: Pinia): void {
         const verifyResult = await authStore.verifyToken();
 
         if (verifyResult.success) {
-          // if (!profileStore.profile) {
-          //   await profileStore.fetchProfile();
-          // }
+          if (!profileStore.profile) {
+            await profileStore.fetchProfile();
+          }
           return next();
         }
 
         const refreshResult = await authStore.refreshToken();
         if (refreshResult.success) {
-          // if (!profileStore.profile) {
-          //   await profileStore.fetchProfile();
-          // }
+          if (!profileStore.profile) {
+            await profileStore.fetchProfile();
+          }
           return next();
         }
 
