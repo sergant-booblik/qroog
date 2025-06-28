@@ -1,16 +1,10 @@
 <template>
   <div class="header__buttons">
     <ButtonControl
+      flex
       :label="t('Header.Menu.Button.Login.title')"
       :color="ButtonColor.PRIMARY_WARM"
-      flex
       @click="navigateToSignIn()"
-    />
-    <ButtonControl
-      :label="t('Header.Menu.Button.Signup.title')"
-      :color="ButtonColor.SECONDARY"
-      flex
-      @click="navigateToSignUp()"
     />
   </div>
 </template>
@@ -23,11 +17,7 @@ import { RouteName } from '@/router';
 import { useSmartT } from '@/logic/i18n.ts';
 
 function navigateToSignIn(): void {
-  router.push({ name: RouteName.AUTH, query: { page: 'sign-in' } });
-}
-
-function navigateToSignUp(): void {
-  router.push({ name: RouteName.AUTH, query: { page: 'sign-up' } });
+  router.push({ name: RouteName.AUTH });
 }
 
 const t = useSmartT();

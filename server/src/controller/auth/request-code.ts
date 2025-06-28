@@ -16,15 +16,13 @@ export async function requestCode(req: Request, res: Response): Promise<void> {
     const loginCodeRep = appDataSource.getRepository(LoginCode);
 
     const existingCode = await loginCodeRep.findOne({
-      where: { email },
+      where: { email, used: false },
     });
 
     if (existingCode && existingCode.expiresAt.getTime() - Date.now() > 0) {
-      const timeLeftMs = existingCode.expiresAt.getTime() - Date.now();
-      const timeLeftMinutes = Math.ceil(timeLeftMs / 60000);
       res.status(429).send({
         success: false,
-        errors: { email: [ { label: 'Error.Auth.CodeRequest.tooFrequent', params: { time: timeLeftMinutes } } ] },
+        errors: { email: [{ label: 'Error.Auth.CodeRequest.tooFrequent' }] },
       });
       return;
     }
@@ -47,7 +45,7 @@ export async function requestCode(req: Request, res: Response): Promise<void> {
 
   loginCode.email = email;
   loginCode.code = code;
-  loginCode.expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+  loginCode.expiresAt = new Date(Date.now() + 3 * 60 * 1000);
 
   await loginCodeRep.save(loginCode);
 

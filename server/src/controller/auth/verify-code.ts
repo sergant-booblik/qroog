@@ -14,12 +14,10 @@ export async function verifyCode(req: Request, res: Response): Promise<void> {
         order: { expiresAt: 'DESC' },
     });
 
-    console.log(codeEntry);
-
     if (!codeEntry || codeEntry.expiresAt < new Date()) {
         res.status(400).send({
             success: false,
-            message: 'Auth.Code.Verify.failed',
+            errors: { code: [{ label: 'Auth.Code.Verify.notExist' }] },
         });
 
         return;

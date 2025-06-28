@@ -66,5 +66,5 @@ const localValue = computed(({
     emit('update:modelValue', value);
     emit('change');
   },
-}))
+}));
 </script>

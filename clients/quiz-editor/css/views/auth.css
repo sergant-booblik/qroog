@@ -19,7 +19,8 @@
     @apply flex flex-col gap-8;
 }
 
-.auth__link {
+.auth__description {
     @apply flex gap-1;
-    @apply text-dark-primary text-sm;
+    @apply mt-2;
+    @apply text-dark-muted text-xs;
 }

@@ -73,7 +73,7 @@ const { loading, withSuccess } = toRefs(props);
 const success = ref(false);
 
 watch(loading, (newValue, oldValue) => {
-  if (oldValue && !newValue && withSuccess) {
+  if (oldValue && !newValue && withSuccess.value) {
     success.value = true;
     setTimeout(() => {
       success.value = false;

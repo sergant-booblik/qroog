@@ -3,7 +3,7 @@ import authRoutes from '@/routes/v1/auth';
 import quizRoutes from '@/routes/v1/quiz';
 import tagRoutes from '@/routes/v1/tag';
 import reviewRoutes from '@/routes/v1/review';
-import translationRoutes from '@/routes/v1/transaltion'
+import translationRoutes from '@/routes/v1/transaltion';
 import profileRoutes from '@/routes/v1/profile';
 
 const routesV1 = Router();
