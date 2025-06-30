@@ -81,19 +81,20 @@
     .profile__avatar {
         svg {
             @apply w-10 h-10;
-            @apply text-dark-muted;
+            @apply text-dark-muted/50;
         }
     }
 
     .profile__toggle {
         @apply items-center gap-1;
         @apply hidden lg:flex;
+        @apply text-dark-primary;
     }
 
     .profile__settings {
         @apply flex flex-col gap-2;
         @apply p-3 pb-1.5 sm:p-5 sm:pb-3;
-        @apply rounded-sm;
+        @apply rounded-xl;
         @apply border border-light-gary;
         @apply bg-white;
     }
@@ -102,8 +103,8 @@
         @apply overflow-hidden;
         @apply flex flex-col sm:flex-row items-start sm:items-center gap-4;
         @apply p-2.5;
-        @apply rounded-sm;
-        @apply bg-light-gary;
+        @apply rounded-xl;
+        @apply bg-light-gary text-dark-primary;
     }
 
     .settings__right {
@@ -130,7 +131,7 @@
 
     .profile__email {
         @apply text-xs;
-        @apply text-dark-muted;
+        @apply text-dark-muted/50;
     }
 
     .settings__buttons {
@@ -154,7 +155,7 @@
         .link {
             @apply relative;
             @apply px-4 py-1.5;
-            @apply rounded-sm;
+            @apply rounded-xl;
             @apply whitespace-nowrap;
             @apply bg-light;
 
@@ -162,7 +163,7 @@
                 @apply opacity-0;
                 @apply left-0;
                 @apply w-full h-full;
-                @apply rounded-sm;
+                @apply rounded-xl;
             }
 
             &:hover {

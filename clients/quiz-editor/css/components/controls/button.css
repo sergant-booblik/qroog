@@ -1,5 +1,5 @@
 .button {
-    @apply rounded-sm;
+    @apply rounded-xl;
     @apply text-base;
     @apply cursor-pointer;
 
@@ -8,7 +8,7 @@
         @apply overflow-hidden;
         @apply flex items-center justify-center gap-1;
         @apply px-4 py-1.5;
-        @apply rounded-sm;
+        @apply rounded-xl;
         @apply whitespace-nowrap;
         @apply transition-all;
     }
@@ -65,7 +65,7 @@
 
         .button__wrapper {
             @apply px-5 py-3;
-            @apply rounded-sm;
+            @apply rounded-xl;
         }
 
         .button__icon svg {
@@ -78,7 +78,7 @@
 
         .button__wrapper {
             @apply px-1 py-1;
-            @apply rounded-sm;
+            @apply rounded-xl;
         }
 
         .button__icon svg {

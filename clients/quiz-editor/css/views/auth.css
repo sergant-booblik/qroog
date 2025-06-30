@@ -7,7 +7,7 @@
     @apply flex flex-col gap-8;
     @apply max-w-full w-96;
     @apply py-6 px-6;
-    @apply rounded-sm;
+    @apply rounded-xl;
     @apply bg-light;
 }
 
@@ -22,5 +22,5 @@
 .auth__description {
     @apply flex gap-1;
     @apply mt-2;
-    @apply text-dark-muted text-xs;
+    @apply text-dark-muted/50 text-xs;
 }
