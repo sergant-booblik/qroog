@@ -37,11 +37,13 @@ export function setupRouterGuard(router: Router, pinia: Pinia): void {
       }
     } else {
       const verifyResult = await authStore.verifyToken();
-      if (verifyResult.success && to.name === RouteName.AUTH) {
+      if (verifyResult.success) {
         if (!profileStore.profile) {
           await profileStore.fetchProfile();
         }
-        return next({ name: RouteName.HOME });
+        if (to.name == RouteName.AUTH) {
+          return next({ name: RouteName.HOME });
+        }
       }
       return next();
     }

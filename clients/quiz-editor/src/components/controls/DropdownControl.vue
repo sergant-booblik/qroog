@@ -1,6 +1,8 @@
 <template>
   <div
     ref="dropdownRef"
+    role="button"
+    tabindex="0"
     :class="[
       'dropdown',
       { 'dropdown--opened': isDropdownOpened },
