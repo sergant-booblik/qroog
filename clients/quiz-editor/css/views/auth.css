@@ -22,5 +22,5 @@
 .auth__description {
     @apply flex gap-1;
     @apply mt-2;
-    @apply text-dark-muted/50 text-xs;
+    @apply text-dark-muted text-xs;
 }

@@ -38,7 +38,7 @@
     @apply min-h-9;
     @apply px-2 py-1;
     @apply rounded-xl;
-    @apply border border-dark-muted/50;
+    @apply border border-dark-muted;
     @apply text-dark-primary;
     @apply bg-white;
 

@@ -81,7 +81,7 @@
     .profile__avatar {
         svg {
             @apply w-10 h-10;
-            @apply text-dark-muted/50;
+            @apply text-dark-muted;
         }
     }
 
@@ -131,7 +131,7 @@
 
     .profile__email {
         @apply text-xs;
-        @apply text-dark-muted/50;
+        @apply text-dark-muted;
     }
 
     .settings__buttons {

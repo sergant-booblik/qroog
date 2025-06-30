@@ -10,14 +10,16 @@
     /*--color-dark-secondary: #607D8B; // #D9D9D9*/
     /*--color-dark-muted: #90A4AE; // #D9D9D9*/
 
-    --color-primary-warm: #D23F15;
+    --color-primary-warm: #FF7043;
+    --color-primary-warm-to: #6C5CCC;
     --color-primary-cool: #27AAE1;
+    --color-primary-cool-from: #F7941D;
     --color-white: #FFFFFF;
-    --color-light: #E5E5E5;
-    --color-light-gary: #D9D9D9;
+    --color-light: #ECEFF1;
+    --color-light-gary: #CFD8DC;
     --color-dark-primary: #09244B;
     --color-dark-secondary: #D9D9D9;
-    --color-dark-muted: #516071;
+    --color-dark-muted: #90A4AE;
 
     --color-danger: #D32F2F;
     --color-danger-light: #FFEBEE;

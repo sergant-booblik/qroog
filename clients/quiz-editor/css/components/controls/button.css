@@ -28,12 +28,12 @@
     }
 
     &.button--primary-warm {
-        @apply bg-primary-warm;
+        @apply bg-gradient-to-br from-primary-warm to-primary-warm-to;
         @apply text-light;
     }
 
     &.button--primary-cool {
-        @apply bg-primary-cool;
+        @apply bg-gradient-to-br from-primary-cool-from to-primary-cool;
         @apply text-light;
     }
 

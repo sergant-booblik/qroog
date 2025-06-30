@@ -46,7 +46,7 @@
     @apply w-full;
     @apply px-3 py-2;
     @apply cursor-pointer;
-    @apply text-dark-primary hover:bg-dark-muted/50;
+    @apply text-dark-primary hover:bg-dark-muted;
 
     &:last-child {
         @apply rounded-b-xl;
