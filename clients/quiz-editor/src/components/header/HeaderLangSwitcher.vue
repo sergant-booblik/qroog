@@ -1,6 +1,7 @@
 <template>
   <div class="header__lang-switcher">
     <SelectControl
+      v-if="selectedOption"
       :items="languagesOptions"
       v-model="selectedOption"
       @update:modelValue="(v) => { setLocale(v.value) }"

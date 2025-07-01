@@ -3,7 +3,8 @@ import { fileURLToPath, URL } from 'node:url';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import eslint from 'vite-plugin-eslint';
+// @ts-ignore
+import eslintPlugin from 'vite-plugin-eslint';
 import svgLoaderPlugin from 'vite-svg-loader';
 import tailwindcss from '@tailwindcss/vite'
 
@@ -25,7 +26,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    eslint({
+    eslintPlugin({
       cache: false,
       emitWarning: true,
       failOnError: true,
