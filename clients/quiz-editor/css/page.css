@@ -1,0 +1,19 @@
+.page {
+    @apply container mx-auto px-4 mt-5;
+}
+
+.page__inner {
+    @apply my-4;
+}
+
+.section__body {
+    @apply mt-4;
+}
+
+.section__title {
+    @apply px-3 py-1;
+    @apply rounded-xl;
+    @apply font-medium;
+    @apply text-dark-primary;
+    @apply bg-light-gray;
+}

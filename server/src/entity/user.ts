@@ -22,8 +22,14 @@ export class User {
     @Column()
     username!: string;
 
-    @Column({ type: 'varchar', default: null })
-    imageUrl: string;
+    @Column({ default: '' })
+    fullName: string;
+
+    @Column({ default: '' })
+    location: string;
+
+    @Column({ type: 'varchar', default: '' })
+    imageUrl: string | null;
 
     @Column({ default: false })
     isBlocked: boolean;

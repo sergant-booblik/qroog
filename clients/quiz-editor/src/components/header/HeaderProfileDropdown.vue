@@ -1,12 +1,12 @@
 <template>
-  <DropdownControl>
+  <DropdownControl ref="dropdownRef">
     <template #button>
       <div class="profile__button">
         <div class="profile__avatar">
-          <img
+          <PictureComponent
             v-if="profile?.imageUrl"
-            :src="profile.imageUrl"
-          >
+            :src="profile?.imageUrl"
+          />
           <BIconPersonCircle v-else/>
         </div>
         <div class="profile__toggle">
@@ -20,10 +20,10 @@
         <div class="settings__main">
           <div class="settings__right">
             <div class="profile__avatar">
-              <img
+              <PictureComponent
                 v-if="profile?.imageUrl"
-                :src="profile.imageUrl"
-              >
+                :src="profile?.imageUrl"
+              />
               <BIconPersonCircle v-else/>
             </div>
             <div class="profile__about">
@@ -41,6 +41,7 @@
                 flex
                 :label="t('Header.Profile.Button.Edit.label')"
                 :color="ButtonColor.PRIMARY_COOL"
+                @click="navigateToProfileSettings()"
               />
             </div>
           </div>
@@ -72,19 +73,27 @@
 
 <script setup lang="ts">
 import DropdownControl from '@/components/controls/DropdownControl.vue';
-import { useProfileStore } from '@/store/profile.ts';
+import { useProfileStore } from '@/store/profile';
 import { storeToRefs } from 'pinia';
 import { BIconPersonCircle, BIconChevronDown, BIconMoon, BIconBoxArrowRight } from 'bootstrap-icons-vue';
 import ButtonControl from '@/components/controls/ButtonControl.vue';
 import { useI18n } from 'vue-i18n';
-import { ButtonColor } from '@/type/button.ts';
+import { ButtonColor } from '@/type/button';
 import HeaderLangSwitcher from '@/components/header/HeaderLangSwitcher.vue';
 import HeaderMenu from '@/components/header/HeaderMenu.vue';
-import { useAuthStore } from '@/store/auth.ts';
+import { useAuthStore } from '@/store/auth';
 import { useRouter } from 'vue-router';
+import { RouteName } from '@/router';
+import { type ComponentPublicInstance, ref } from 'vue';
+import PictureComponent from '@/components/PictureComponent.vue';
 
 async function logout(): Promise<void> {
   await authStore.logout(router);
+}
+
+function navigateToProfileSettings(): void {
+  router.push({ name: RouteName.PROFILE_SETTINGS });
+  dropdownRef.value?.closeDropdown();
 }
 
 const router = useRouter();
@@ -95,4 +104,6 @@ const profileStore = useProfileStore();
 const { t } = useI18n();
 
 const { profile } = storeToRefs(profileStore);
+
+const dropdownRef = ref<ComponentPublicInstance<{ closeDropdown: () => void }>>();
 </script>

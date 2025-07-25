@@ -1,6 +1,8 @@
 @import "./components/header.css";
+@import "./components/picture.css";
 @import "./components/controls/link.css";
 @import "./components/controls/input.css";
 @import "./components/controls/button.css";
 @import "./components/controls/select.css";
 @import "./components/controls/dropdown.css";
+@import "./components/controls/image-uploader.css";

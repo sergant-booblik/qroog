@@ -1,8 +1,16 @@
 <template>
   <div
     ref="selectRef"
-    class="select"
+    :class="[
+      'select',
+      `select--${color}`,
+      ]"
   >
+    <label
+      class="select__label"
+    >
+      {{ label }}
+    </label>
     <button
       type="button"
       :class="[
@@ -13,10 +21,10 @@
     >
       <div class="select-item">
         <component
-          v-if="selected.icon"
-          :is="selected.icon"
+          v-if="selected?.icon"
+          :is="selected?.icon"
         />
-        {{ selected.label }}
+        {{ selected?.label }}
       </div>
       <BIconChevronDown class="select-chevron" />
     </button>
@@ -45,7 +53,7 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
 import { BIconChevronDown } from 'bootstrap-icons-vue';
-import type { SelectItem } from '@/type/select';
+import { SelectColor, type SelectItem } from '@/type/select';
 import { onClickOutside } from '@vueuse/core'
 
 function toggle() {
@@ -62,18 +70,22 @@ function select(item: SelectItem) {
 }
 
 interface Props {
+  label?: string;
   items?: SelectItem[];
-  modelValue: SelectItem;
+  modelValue?: SelectItem;
+  color?: SelectColor;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  color: SelectColor.SECONDARY,
+});
 const emit = defineEmits(['update:modelValue']);
 
 const selectRef = ref<HTMLElement>();
 const isOpen = ref(false);
 const selected = ref(props.modelValue);
 
-const unselectedItems = computed(() => props.items?.filter((item) => selected.value.value !== item.value));
+const unselectedItems = computed(() => props.items?.filter((item) => selected.value?.value !== item.value));
 
 watchEffect(() => {
   selected.value = props.modelValue;

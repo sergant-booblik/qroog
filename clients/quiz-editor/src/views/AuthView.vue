@@ -72,13 +72,13 @@ import { useRoute, useRouter } from 'vue-router';
 import { BIconArrowRight } from 'bootstrap-icons-vue';
 import InputControl from '@/components/controls/InputControl.vue';
 import ButtonControl from '@/components/controls/ButtonControl.vue';
-import { ButtonColor, ButtonType } from '@/type/button.ts';
+import { ButtonColor, ButtonType } from '@/type/button';
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { RouteName } from '@/router';
-import { useAuthStore } from '@/store/auth.ts';
+import { useAuthStore } from '@/store/auth';
 import { storeToRefs } from 'pinia';
-import { useSmartT } from '@/logic/i18n.ts';
-import { InputType } from '@/type/input.ts';
+import { useSmartT } from '@/logic/i18n';
+import { InputType } from '@/type/input';
 
 const CODE_RESEND_TIMEOUT = 3 * 60 * 1000;
 

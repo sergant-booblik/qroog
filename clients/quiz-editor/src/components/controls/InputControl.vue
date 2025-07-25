@@ -13,6 +13,10 @@
     >
       {{ label }}
     </label>
+    <component
+      :is="prependIcon"
+      class="input__prepend-icon"
+    />
     <input
       v-model="localValue"
       :name="id"
@@ -39,14 +43,15 @@
 
 <script setup lang="ts">
 import { InputType } from '@/type/input';
-import { computed } from 'vue';
-import type { ErrorDetail } from '@/type/error.ts';
-import { useSmartT } from '@/logic/i18n.ts';
+import { type Component, computed } from 'vue';
+import type { ErrorDetail } from '@/type/error';
+import { useSmartT } from '@/logic/i18n';
 
 interface Props {
   modelValue: string | number,
   disabled?: boolean,
   type?: InputType,
+  prependIcon?: Component,
   pattern?: string,
   inputmode?: 'search' | 'text' | 'email' | 'tel' | 'url' | 'none' | 'numeric' | 'decimal' | undefined,
   label?: string,

@@ -2,11 +2,13 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import HomeView from '@/views/HomeView.vue';
 import DashboardView from '@/views/DashboardView.vue';
 import AuthView from '@/views/AuthView.vue';
+import ProfileSettingsView from '@/views/ProfileSettingsView.vue';
 
 export enum RouteName {
   HOME = 'HOME',
   AUTH = 'AUTH',
   DASHBOARD = 'DASHBOARD',
+  PROFILE_SETTINGS = 'PROFILE_SETTINGS',
 
   // not created yet
   PARTNER = 'PARTNER',
@@ -43,6 +45,11 @@ const routes: Array<RouteRecordRaw> = [
         name: RouteName.DASHBOARD,
         component: DashboardView,
       },
+      {
+        path: '/profile-settings',
+        name: RouteName.PROFILE_SETTINGS,
+        component: ProfileSettingsView,
+      }
     ]
   },
 ];

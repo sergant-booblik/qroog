@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia';
-import { api } from '@/api'
-import type { Language, Translations } from '@/type/translation'
+import { api } from '@/api';
+import { type Language, type Translations } from '@/type/translation';
 
 export interface TranslationState {
   translations: Translations | undefined,
-  languages: Language[] | undefined,
+  languages: Language[],
 }
 
 export const useTranslationStore = defineStore('translation', {
   state: (): TranslationState => ({
     translations: undefined,
-    languages: undefined,
+    languages: [],
   }),
   actions: {
     async fetchTranslations(lang: string) {

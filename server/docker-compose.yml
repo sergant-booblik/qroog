@@ -21,6 +21,20 @@ services:
     volumes:
       - qroog_redisdata:/data
 
+  qroog_minio:
+    image: minio/minio:latest
+    container_name: qroog_minio
+    ports:
+      - "9002:9000"
+      - "9003:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - qroog_minio:/data
+    command: server /data --console-address ":9001"
+
 volumes:
   qroog_pgdata:
   qroog_redisdata:
+  qroog_minio:

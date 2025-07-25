@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import LogoSVG from '@/assets/logo.svg';
 import { RouteName } from '@/router';
-import { useAuthStore } from '@/store/auth.ts';
+import { useAuthStore } from '@/store/auth';
 import { computed } from 'vue';
 
 const authStore = useAuthStore();

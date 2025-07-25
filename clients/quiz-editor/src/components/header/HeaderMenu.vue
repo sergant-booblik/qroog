@@ -16,8 +16,8 @@
 import { RouteName } from '@/router';
 import { BIconStarFill } from 'bootstrap-icons-vue';
 import LinkControl from '@/components/controls/LinkControl.vue';
-import { LinkColor } from '@/type/link.ts';
-import { useSmartT } from '@/logic/i18n.ts';
+import { LinkColor } from '@/type/link';
+import { useSmartT } from '@/logic/i18n';
 
 const t = useSmartT();
 </script>

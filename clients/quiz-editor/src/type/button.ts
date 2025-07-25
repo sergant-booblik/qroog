@@ -9,6 +9,7 @@ export enum ButtonColor {
   PRIMARY_COOL = 'primary-cool',
   SECONDARY = 'secondary',
   GHOST = 'ghost',
+  DANGER = 'danger',
   DANGER_GHOST = 'danger-ghost',
 }
 

@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { type Component } from 'vue';
 import { type RouteLocationRaw } from 'vue-router';
-import { LinkColor } from '@/type/link.ts';
+import { LinkColor } from '@/type/link';
 
 interface Props {
   label: string,

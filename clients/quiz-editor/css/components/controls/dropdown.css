@@ -1,4 +1,5 @@
 .dropdown {
+    @apply z-10;
     @apply relative;
 }
 

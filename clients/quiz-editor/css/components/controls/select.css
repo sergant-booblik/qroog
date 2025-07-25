@@ -1,20 +1,54 @@
 .select {
     @apply relative;
-    @apply inline-block;
+    @apply flex flex-col gap-1;
     @apply w-full;
     @apply text-left;
 }
 
+.select--secondary {
+    .select-button {
+        @apply bg-light-gray text-dark-primary;
+        @apply border-transparent;
+    }
+
+    .select-dropdown {
+        @apply bg-light-gray;
+        @apply border-transparent;
+    }
+
+    .select-option {
+        @apply text-dark-primary hover:bg-dark-muted;
+    }
+}
+
+.select--ghost {
+    .select-button {
+        @apply bg-transparent text-dark-primary;
+        @apply border-dark-muted;
+    }
+
+    .select-dropdown {
+        @apply bg-transparent;
+        @apply border-dark-muted;
+    }
+
+    .select-option {
+        @apply text-dark-primary hover:bg-light;
+    }
+}
+
 .select-button {
     @apply flex items-center justify-between gap-2.5;
-    @apply w-full;
+    @apply w-full h-9;
     @apply px-3 py-1.5;
     @apply rounded-xl;
+    @apply border;
     @apply cursor-pointer;
-    @apply bg-light-gary text-dark-primary;
+
 
     &.select-button--opened {
         @apply rounded-b-none;
+        @apply border-b-0;
 
         .select-chevron {
             @apply rotate-180;
@@ -35,10 +69,11 @@
 }
 
 .select-dropdown {
-    @apply absolute z-10;
+    @apply absolute top-full z-10;
     @apply w-full;
     @apply rounded-b-xl;
-    @apply bg-light-gary;
+    @apply border border-t-0;
+    @apply bg-light-gray;
 }
 
 .select-option {

@@ -8,10 +8,9 @@ async function getUserId(accessToken: string): Promise<number | undefined> {
 
 export async function authorizeUser(req: Request, res: Response): Promise<number | null> {
     const accessToken = req.cookies['accessToken'];
-    const routeUserId = Number(req.params.userId);
     const userId = await getUserId(accessToken);
 
-    if (!userId || userId !== routeUserId) {
+    if (!userId) {
         res.status(403).json({ error: 'Unauthorized' });
         return null;
     }

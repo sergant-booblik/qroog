@@ -6,9 +6,9 @@ import { type ErrorData } from '@/type/error';
 import { type VerifyTokenResponse } from '@/api/auth/verify-token';
 import { type RefreshTokenResponse } from '@/api/auth/refresh-token';
 import { type Router } from 'vue-router';
-import type { RequestCodeResponse } from '@/api/auth/send-code.ts';
-import { calculateCurrentLocale } from '@/logic/i18n.ts';
-import type { VerifyCodeResponse } from '@/api/auth/verify-code.ts';
+import type { RequestCodeResponse } from '@/api/auth/send-code';
+import { calculateCurrentLocale } from '@/logic/i18n';
+import type { VerifyCodeResponse } from '@/api/auth/verify-code';
 
 interface AuthState {
   isAuth: boolean,

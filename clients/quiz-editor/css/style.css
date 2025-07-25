@@ -2,5 +2,8 @@
 @import "./tailwind-override.css";
 @import "./general.css";
 @import "./components.css";
+
+@import "./page.css";
 @import "./views.css";
+
 @import "./animation.css";

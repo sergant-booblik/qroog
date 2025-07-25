@@ -46,6 +46,8 @@ function toggleDropdown(): void {
   }
 }
 
+defineExpose({ closeDropdown });
+
 const dropdownRef = ref<HTMLElement>();
 const isDropdownOpened = ref(false);
 

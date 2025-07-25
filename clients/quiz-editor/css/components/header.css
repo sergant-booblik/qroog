@@ -66,7 +66,7 @@
 
 .header__delimiter {
     @apply w-px h-8;
-    @apply bg-light-gary;
+    @apply bg-light-gray;
 }
 
 .header__buttons {
@@ -79,6 +79,14 @@
     }
 
     .profile__avatar {
+        @apply overflow-hidden;
+        @apply w-10 h-10;
+
+        img {
+            @apply rounded-full;
+            @apply aspect-square;
+        }
+
         svg {
             @apply w-10 h-10;
             @apply text-dark-muted;
@@ -95,7 +103,7 @@
         @apply flex flex-col gap-2;
         @apply p-3 pb-1.5 sm:p-5 sm:pb-3;
         @apply rounded-xl;
-        @apply border border-light-gary;
+        @apply border border-light-gray;
         @apply bg-white;
     }
 
@@ -104,7 +112,7 @@
         @apply flex flex-col sm:flex-row items-start sm:items-center gap-4;
         @apply p-2.5;
         @apply rounded-xl;
-        @apply bg-light-gary text-dark-primary;
+        @apply bg-light-gray text-dark-primary;
     }
 
     .settings__right {

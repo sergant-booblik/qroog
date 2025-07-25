@@ -1,4 +1,4 @@
-import type { ErrorData } from '@/type/error.ts';
+import type { ErrorData } from '@/type/error';
 
 export interface VerifyCodeRequest {
   email: string,

@@ -10,7 +10,7 @@ const routesV1 = Router();
 
 routesV1.use('/', translationRoutes);
 routesV1.use('/auth', authRoutes);
-routesV1.use('/:userId/profile', profileRoutes);
+routesV1.use('/profile', profileRoutes);
 routesV1.use('/:userId/quiz', quizRoutes);
 routesV1.use('/:userId/tag', tagRoutes);
 routesV1.use('/:userId/review', reviewRoutes);

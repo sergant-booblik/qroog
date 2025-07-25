@@ -19,13 +19,30 @@ import {
   createFetchProfileFunction,
   type FetchProfileResponse,
 } from '@/api/profile/fetch-profile';
-import { createLogoutFunction, type LogoutResponse } from '@/api/auth/logout';
+import {
+  createLogoutFunction,
+  type LogoutResponse,
+} from '@/api/auth/logout';
 import {
   createRequestCodeFunction,
   type RequestCodeRequest,
   type RequestCodeResponse,
 } from '@/api/auth/send-code';
-import { createVerifyCodeFunction, type VerifyCodeRequest, type VerifyCodeResponse } from '@/api/auth/verify-code.ts';
+import {
+  createVerifyCodeFunction,
+  type VerifyCodeRequest,
+  type VerifyCodeResponse,
+} from '@/api/auth/verify-code';
+import {
+  createUploadProfileImageFunction,
+  type UploadProfileImageRequest,
+  type UploadProfileImageResponse,
+} from '@/api/profile/upload-profile-image';
+import {
+  createUpdateProfileFunction,
+  type UpdateProfileRequest,
+  type UpdateProfileResponse,
+} from '@/api/profile/update-profile';
 
 interface Api {
   requestCode: (request: RequestCodeRequest) => Promise<RequestCodeResponse>,
@@ -35,6 +52,8 @@ interface Api {
   logout: () => Promise<LogoutResponse>
 
   fetchProfile: () => Promise<FetchProfileResponse>,
+  updateProfile: (request: UpdateProfileRequest) => Promise<UpdateProfileResponse>,
+  uploadProfileImage: (request: UploadProfileImageRequest) => Promise<UploadProfileImageResponse>,
 
   fetchTranslations: (request: FetchTranslationsRequest) => Promise<FetchTranslationsResponse>;
   fetchLanguages: () => Promise<FetchLanguagesResponse>;
@@ -51,6 +70,8 @@ function createApi(): Api {
     logout: createLogoutFunction(apiUrlV1),
 
     fetchProfile: createFetchProfileFunction(apiUrlV1),
+    updateProfile: createUpdateProfileFunction(apiUrlV1),
+    uploadProfileImage: createUploadProfileImageFunction(apiUrlV1),
 
     fetchTranslations: createFetchTranslationsFunction(apiUrlV1),
     fetchLanguages: createFetchLanguagesFunction(apiUrlV1),

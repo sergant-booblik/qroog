@@ -56,7 +56,7 @@ import { ref } from 'vue';
 import HeaderButtons from '@/components/header/HeaderButtons.vue';
 import HeaderLangSwitcher from '@/components/header/HeaderLangSwitcher.vue';
 import HeaderMenu from '@/components/header/HeaderMenu.vue';
-import { useAuthStore } from '@/store/auth.ts';
+import { useAuthStore } from '@/store/auth';
 import { storeToRefs } from 'pinia';
 import HeaderProfileDropdown from '@/components/header/HeaderProfileDropdown.vue';
 

@@ -1,5 +1,5 @@
 import { beforeEach, describe, it, expect, vi } from 'vitest';
-import { createFetchLanguagesFunction } from '@/api/translation/fetch-languages.ts';
+import { createFetchLanguagesFunction } from '@/api/translation/fetch-languages';
 
 describe('createFetchLanguagesFunction', () => {
   const mockApiUrl = 'https://api.example.com/api/v1';

@@ -27,6 +27,10 @@
         @apply w-full;
     }
 
+    &:not(.button--flex) {
+        @apply w-fit;
+    }
+
     &.button--primary-warm {
         @apply bg-gradient-to-br from-primary-warm to-primary-warm-to;
         @apply text-light;
@@ -38,7 +42,7 @@
     }
 
     &.button--secondary {
-        @apply bg-light-gary;
+        @apply bg-light-gray;
         @apply text-dark-primary;
     }
 
@@ -60,6 +64,15 @@
         }
     }
 
+    &.button--danger {
+        @apply bg-danger;
+        @apply text-light;
+
+        .button__wrapper {
+            @apply bg-danger;
+        }
+    }
+
     &.button--large {
         @apply text-xl;
 
@@ -70,6 +83,20 @@
 
         .button__icon svg {
             @apply w-6 h-6;
+        }
+    }
+
+    &.button--medium {
+        @apply text-base;
+
+        .button__wrapper {
+            @apply h-8;
+            @apply px-4 py-1.5;
+            @apply rounded-xl;
+        }
+
+        .button__icon svg {
+            @apply w-4 h-4;
         }
     }
 

@@ -1,5 +1,18 @@
 .input__control {
+    @apply relative;
     @apply flex flex-col gap-1;
+}
+
+.input__control:has(> .input__prepend-icon) {
+    .input__field {
+        @apply ps-8;
+    }
+}
+
+.input__prepend-icon {
+    @apply absolute bottom-2 left-2;
+    @apply w-5 h-5;
+    @apply text-dark-muted;
 }
 
 .input__control--disabled {

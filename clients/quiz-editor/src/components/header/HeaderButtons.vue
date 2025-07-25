@@ -14,7 +14,7 @@ import { ButtonColor } from '@/type/button';
 import ButtonControl from '@/components/controls/ButtonControl.vue';
 import { useRouter } from 'vue-router';
 import { RouteName } from '@/router';
-import { useSmartT } from '@/logic/i18n.ts';
+import { useSmartT } from '@/logic/i18n';
 
 function navigateToSignIn(): void {
   router.push({ name: RouteName.AUTH });

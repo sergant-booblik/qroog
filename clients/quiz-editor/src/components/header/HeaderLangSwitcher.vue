@@ -16,7 +16,7 @@ import { setLocale } from '@/logic/i18n';
 import { useTranslationStore } from '@/store/translation';
 import Flag from '@/components/icons/flags';
 import SelectControl from '@/components/controls/SelectControl.vue';
-import type { SelectItem } from '@/type/select';
+import { type SelectItem } from '@/type/select';
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n();
