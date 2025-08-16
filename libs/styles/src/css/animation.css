@@ -1,0 +1,23 @@
+@keyframes shake {
+    0% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: 5px;
+    }
+    75% {
+        margin-left: -5px;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes move-stripes {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}

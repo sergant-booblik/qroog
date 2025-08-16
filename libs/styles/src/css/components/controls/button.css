@@ -1,0 +1,156 @@
+.button {
+    @apply rounded-xl;
+    @apply text-base;
+    @apply cursor-pointer;
+
+    .button__wrapper {
+        @apply relative;
+        @apply overflow-hidden;
+        @apply flex items-center justify-center gap-1;
+        @apply px-4 py-1.5;
+        @apply rounded-xl;
+        @apply whitespace-nowrap;
+        @apply transition-all;
+    }
+
+    &:active {
+        @apply translate-y-0.5;
+    }
+
+    &:hover {
+        .button__wrapper {
+            background-color: rgba(9, 36, 75, 0.05); /* dark-primary with 5% opacity */
+        }
+    }
+
+    &.button--flex {
+        @apply w-full;
+    }
+
+    &:not(.button--flex) {
+        @apply w-fit;
+    }
+
+    &.button--primary-warm {
+        @apply bg-gradient-to-br from-primary-warm to-primary-warm-to;
+        @apply text-light;
+    }
+
+    &.button--primary-cool {
+        @apply bg-gradient-to-br from-primary-cool to-primary-cool-to;
+        @apply text-light;
+    }
+
+    &.button--secondary {
+        @apply bg-light-gray;
+        @apply text-dark-primary;
+    }
+
+    &.button--ghost {
+        @apply bg-transparent;
+        @apply text-dark-primary;
+
+        .button__wrapper {
+            @apply bg-transparent;
+        }
+    }
+
+    &.button--danger-ghost {
+        @apply bg-transparent;
+        @apply text-danger;
+
+        .button__wrapper {
+            @apply bg-transparent;
+        }
+    }
+
+    &.button--danger {
+        @apply bg-danger;
+        @apply text-light;
+
+        .button__wrapper {
+            @apply bg-danger;
+        }
+    }
+
+    &.button--large {
+        @apply text-xl;
+
+        .button__wrapper {
+            @apply px-5 py-3;
+            @apply rounded-xl;
+        }
+
+        .button__icon svg {
+            @apply w-6 h-6;
+        }
+    }
+
+    &.button--medium {
+        @apply text-base;
+
+        .button__wrapper {
+            @apply h-8;
+            @apply px-4 py-1.5;
+            @apply rounded-xl;
+        }
+
+        .button__icon svg {
+            @apply w-4 h-4;
+        }
+    }
+
+    &.button--small {
+        @apply text-sm;
+
+        .button__wrapper {
+            @apply px-1 py-1;
+            @apply rounded-xl;
+        }
+
+        .button__icon svg {
+            @apply w-3 h-3;
+        }
+    }
+
+    &.button--loading {
+        .button__wrapper {
+            &::before {
+                @apply content-[''];
+                @apply absolute top-0 -left-[150%];
+                @apply w-[300%] h-full;
+                @apply bg-repeat;
+                background-image: repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.2) 20px,
+                    transparent 20px,
+                    transparent 40px
+                );
+                @apply animate-move-stripes;
+            }
+        }
+    }
+
+    &.button--success {
+        svg {
+            @apply w-6 h-6;
+        }
+    }
+
+    &.button--disabled {
+        @apply opacity-50;
+        @apply grayscale-25;
+        @apply cursor-not-allowed;
+
+        &:hover {
+            .button__wrapper {
+                background-color: rgba(9, 36, 75, 0); /* dark-primary with 0% opacity */
+            }
+        }
+
+        &:active {
+            @apply translate-y-0;
+        }
+    }
+}

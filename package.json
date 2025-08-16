@@ -1,11 +1,19 @@
 {
   "name": "qroog",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "services/*/*",
+    "libs/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:libs": "pnpm --filter=@libs/vue-ui build",
+    "build:auth": "pnpm --filter=./services/auth/vue build",
+    "dev:auth": "pnpm --filter=./services/auth/vue dev",
+    "dev:libs": "pnpm --filter=@libs/vue-ui dev"
   },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "devDependencies": {
+    "typescript": "5.9.2"
+  },
+  "packageManager": "pnpm@10.14.0"
 }

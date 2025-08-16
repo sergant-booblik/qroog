@@ -1,0 +1,35 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@libs/shared-types": "workspace:*",
+    "@libs/shared-env": "workspace:*",
+    "@libs/styles": "workspace:*",
+    "@libs/vue-ui": "workspace:*",
+    "@vueuse/core": "^13.6.0",
+    "bootstrap-icons-vue": "^1.0.0",
+    "intl-messageformat": "^10.5.0",
+    "pinia": "^2.1.0",
+    "vue": "^3.5.17",
+    "vue-i18n": "^9.9.0",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vite-svg-loader": "^5.1.0",
+    "vue-tsc": "^2.2.12"
+  }
+}

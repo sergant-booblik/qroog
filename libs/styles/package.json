@@ -1,0 +1,9 @@
+{
+  "name": "@libs/styles",
+  "version": "1.0.0",
+  "main": "src/style.css",
+  "exports": {
+    ".": "./src/style.css",
+    "./components": "./src/css/components.css"
+  }
+}

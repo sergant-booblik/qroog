@@ -1,0 +1,36 @@
+http:
+  routers:
+    mailer:
+      rule: "Host(`${MAILER_HOST}`)"
+
+    i18n:
+      rule: "Host(`${I18N_HOST}`)"
+
+    auth-express:
+      rule: "Host(`${AUTH_HOST}`)"
+
+    auth-vue:
+      rule: "Host(`VITE_AUTH_HOST`)"
+      entryPoints:
+        - web
+
+  services:
+    mailer:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:`${MAILER_PORT}`"
+
+    i18n:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:`${I18N_PORT}`"
+
+    auth-express:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:`${AUTH_PORT}`"
+
+    auth-vue:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:`${VITE_AUTH_PORT}`"

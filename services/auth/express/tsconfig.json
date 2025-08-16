@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "outDir": "dist",
+    "rootDir": "../../../",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@libs/*":  ["../../../libs/*/src"]
+    }
+  },
+  "include": ["src", "../../../libs"]
+}

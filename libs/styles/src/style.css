@@ -1,0 +1,9 @@
+@import "css/fonts.css";
+@import "css/tailwind-override.css";
+@import "css/general.css";
+@import "css/components.css";
+
+@import "css/page.css";
+@import "css/views.css";
+
+@import "css/animation.css";

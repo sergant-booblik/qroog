@@ -1,0 +1,25 @@
+services:
+  mailer:
+    build:
+      context: .
+      dockerfile: services/mailer/express/Dockerfile
+    environment:
+      NODE_ENV: production
+    expose:
+      - ${MAILER_PORT}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mailer.rule=Host(`${MAILER_HOST}`)"
+      - "traefik.http.services.mailer.loadbalancer.server.port=${MAILER_PORT}"
+  i18n:
+    build:
+      context: .
+      dockerfile: services/i18n/express/Dockerfile
+    environment:
+      NODE_ENV: production
+    expose:
+      - ${I18N_PORT}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.i18n.rule=Host(`${I18N_HOST}`)"
+      - "traefik.http.services.i18n.loadbalancer.server.port=${I18N_PORT}"

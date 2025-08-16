@@ -1,0 +1,16 @@
+.image-uploader {
+    @apply relative;
+    @apply overflow-hidden;
+}
+
+.image-uploader__input {
+    @apply hidden;
+}
+
+.image-uploader__preview {
+    @apply relative;
+
+    img {
+        @apply object-cover;
+    }
+}

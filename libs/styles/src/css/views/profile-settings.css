@@ -1,0 +1,47 @@
+.page--profile-settings {
+    .page__inner {
+        @apply flex flex-col gap-12;
+    }
+
+    .section__body {
+        @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+    }
+
+    .section__group {
+        @apply flex flex-col gap-4;
+    }
+
+    .section__button-group {
+        @apply flex gap-2;
+    }
+
+    .section--profile-settings-personal {
+        .image-uploader {
+            @apply row-span-2;
+            @apply flex gap-4;
+
+            .image-uploader__preview {
+                @apply overflow-hidden;
+                @apply w-32 h-32;
+
+                img {
+                    @apply aspect-square;
+                    @apply rounded-full;
+                }
+            }
+
+            .image-uploader__body {
+                @apply flex flex-col justify-between;
+            }
+
+            .image-uploader__title {
+                @apply text-base font-medium;
+            }
+
+            .image-uploader__subtitle {
+                @apply text-sm;
+                @apply text-dark-muted;
+            }
+        }
+    }
+}
